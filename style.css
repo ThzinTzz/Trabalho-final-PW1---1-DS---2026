@@ -1,0 +1,106 @@
+/* Todos os elementos*/
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+body{
+    background-color: rgb(36, 40, 44);
+}
+/*-------------------------------------------------------INICIO E FIM-------------------------------------------------------*/
+.inicio-index,
+.inicio-cursos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+    /* Faz com que o inicio roxo ocupe toda a tela*/
+    width: 100%;
+    min-height: 100vh;
+    
+    background-color: blueviolet;
+}
+.fim-index{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 250px;
+    margin-bottom: 25px;
+}
+/*--------------------------------------------------------------------------------------------------------------------------*/
+
+
+/*-------------------------------------------------------BOTÕES-------------------------------------------------------*/
+.btns-inicio{
+    display: flex;
+    gap: 20px;
+}
+.btns-fim{
+    display: flex;
+    gap: 500px; 
+}
+
+.btns-inicio button,
+.btns-fim button{
+    width: 170px;
+    height: 50px;
+    border-radius: 50px;
+    
+}
+
+.btn-para-lista-faculdades,
+.btn-para-lista-cursos,
+.btn-para-inicio,
+.btn-para-cursos{
+    background-color: black;
+}
+
+.btn-conheca-cursos,
+.btn-para-login{
+    background-color: blueviolet;
+}
+
+.btn-para-login{
+    position: fixed;
+    top: 15px;
+    right: 15px;
+}
+
+/*--------------------------------------------------------------------------------------------------------------------*/
+
+
+.seçao-faculdades h2,
+.cursos h2{
+    margin-top: 10% ;
+    margin-bottom: 20%;
+    text-align: center;
+    flex-direction: column;  
+}
+
+.div-faculdades,
+.div-cursos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    /*Espaçamento entre os cards de 200px*/
+    gap: 200px;
+    /*Faz com que ocorra a quebra dos cards quando não cabe mais um sem ter que alterar os outros*/
+    flex-wrap: wrap;
+}
+.div-cards-faculdades,
+.div-cards-cursos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 2.5px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.12);
+    height: 250px;
+    width: 20%;
+}
+
