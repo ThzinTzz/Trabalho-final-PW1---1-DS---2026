@@ -9,15 +9,75 @@
 </head>
 <body>
     <div class="inicio-contato">
-        <h1>&#x2795 Contate-nos &#x2796</h1>
-        <h2>&#x1F7F0 Suporte rápido e ágil para seus problemas(Não matemáticos kk) &#x2797</h2>
+        <h1>Contate-nos</h1>
+        <h2>Suporte rápido e ágil para seus problemas(Não matemáticos kk)</h2>
 
         <div class="btns-inicio">
-            <button onclick="rolarParaBaixo()" class="btn-para-lista-faculdades">Mostre-me o contato</button>
+            <button onclick="rolarParaBaixo()" class="btn-para-lista-contato">Mostre-me o contato</button>
             <button class="btn-para-login">Entre agora</button>
             <a href="cursos.html"><button onclick="rolarParaBaixo()" class="btn-para-cursos">Ir para os cursos</button></a>
-            <a href="contato.html"><button class="btn-para-contato">Voltar para o inicio</button></a>
+            <a href="index.html"><button class="btn-para-contato">Voltar para o inicio</button></a>
         </div>
     </div>
+
+    <div id="destino"></div>
+
+    <h1 class="h1-suportecontato">Contato</h1>
+    <section class="contato">
+        <h2>Como nos contatar?</h2>
+        <ul>
+            <a href="https://www.whatsapp.com/">
+                <div class="contato-apps">
+                    <img class="img-icons" src="./images/01_whatsapp.png" alt="">
+                    <p class="p-icons">Whatsapp</p>
+                </div>
+            </a>
+            <a href="https://www.instagram.com/">
+                <div class="contato-apps">
+                    <img class="img-icons" src="./images/02_instagram.png" alt="">
+                    <p class="p-icons">Instagram</p>
+                </div>
+            </a>
+            <a href="https://www.facebook.com/">
+                <div class="contato-apps">
+                    <img class="img-icons" src="./images/03_facebook.png" alt="">
+                    <p class="p-icons">Facebook</p>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/login/pt/">
+                <div class="contato-apps">
+                    <img class="img-icons" src="./images/04_linkedin.png" alt="">
+                    <p class="p-icons">Linkedin</p>
+                </div>
+            </a>
+        </ul>
+    </section>
+    <h1 class="h1-suportecontato">Suporte</h1>
+    <form class="suporte" method="post">
+        
+        <div class="campo-grupo">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required>
+        </div>
+
+        <div class="campo-grupo">
+            <label for="email">Email</label>
+            <input type="email" id="nome" name="email" placeholder="Digite seu email..."> 
+            
+        </div>
+
+        <div class="campo-grupo">
+            <label for="descricao">Descrição</label>
+            <input class="descricao" type="text" id="descricao" name="descricao" placeholder="Digite aqui seu problema..."> 
+            <button class="enviar-suporte" type="submit">Enviar</button>
+        </div>
+
+    </form>
+
+    <section class="suporte">
+        
+    </section>
+    
+    <script src="script.js"></script>
 </body>
 </html>
