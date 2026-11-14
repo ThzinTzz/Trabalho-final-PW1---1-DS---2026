@@ -8,13 +8,16 @@
     <link rel="shortcut icon" href="images/EXATAS-NA-HORA.ico" type="image/x-icon">
 </head>
 <body>
+    <button class="btn-tema" type="button">
+        ☀️ Modo claro
+    </button>
     <div class="inicio-index">
         <h1>ExatasNaHora</h1>
         <h2>Maior site de cursos de exatas de todo o Brasil!</h2>
 
         <div class="btns-inicio">
             <button onclick="rolarParaBaixo()" class="btn-para-lista-faculdades">Conheça faculdades</button>
-            <button class="btn-para-login">Entre agora</button>
+            <button type="button" class="btn-para-login">Cadastre-se</button>
             <a href="cursos.html"><button onclick="rolarParaBaixo()" class="btn-para-cursos">Ir para cursos</button></a>
             <a href="contato.html"><button class="btn-para-contato">Contate-nos</button></a>
         </div>
@@ -27,28 +30,52 @@
         
         <div class="div-faculdades">
             <div class="div-cards-faculdades">
-                <p>Faculdade</p>
-                <p>Informações</p>
+                <p>Unicamp</p>
+                <p>Universidade pública de referência em engenharia, computação e ciências exatas, em Campinas.</p>
             </div>
             <div class="div-cards-faculdades">
-                <p>Faculdade</p>
-                <p>Informações</p>
+                <p>UNESP</p>
+                <p>Universidade pública paulista com cursos de exatas em diversos campi do estado.</p>
             </div>
             <div class="div-cards-faculdades">
-                <p>Faculdade</p>
-                <p>Informações</p>
+                <p>USP</p>
+                <p>Universidade pública com ampla oferta de cursos de engenharia, matemática e tecnologia.</p>
             </div>
             <div class="div-cards-faculdades">
-                <p>Faculdade</p>
-                <p>Informações</p>
+                <p>UFRJ</p>
+                <p>Universidade federal com tradição em engenharia, física, matemática e computação.</p>
             </div>
             <div class="div-cards-faculdades">
-                <p>Faculdade</p>
-                <p>Informações</p>
+                <p>UFMG</p>
+                <p>Universidade federal reconhecida por cursos de engenharia e ciências exatas.</p>
             </div>
             <div class="div-cards-faculdades">
-                <p>Faculdade</p>
-                <p>Informações</p>
+                <p>ITA</p>
+                <p>Instituto de ensino superior com destaque nacional em engenharia e tecnologia.</p>
+            </div>
+            <div class="div-cards-faculdades">
+                <p>UFRGS</p>
+                <p>Universidade federal com cursos de engenharia, computação e ciências exatas em Porto Alegre.</p>
+            </div>
+            <div class="div-cards-faculdades">
+                <p>UFSC</p>
+                <p>Universidade federal reconhecida por sua formação em engenharia e tecnologia, em Santa Catarina.</p>
+            </div>
+            <div class="div-cards-faculdades">
+                <p>UFPR</p>
+                <p>Uma das universidades mais tradicionais do país, com opções em engenharia e áreas científicas.</p>
+            </div>
+            <div class="div-cards-faculdades">
+                <p>UnB</p>
+                <p>Universidade pública em Brasília com cursos de engenharia, matemática e computação.</p>
+            </div>
+            <div class="div-cards-faculdades">
+                <p>UFPE</p>
+                <p>Universidade federal com formação em engenharia, computação e ciências no Recife.</p>
+            </div>
+            <div class="div-cards-faculdades">
+                <p>UFC</p>
+                <p>Universidade federal com cursos de engenharia e ciências exatas em diferentes campi do Ceará.</p>
             </div>
         </div>
     </section>
@@ -58,6 +85,53 @@
             <a href="cursos.html"><button class="btn-conheca-cursos">Conheça os cursos</button></a>
         </div>
     </div>
+
+    <dialog class="modal-cadastro" aria-labelledby="titulo-cadastro">
+        <div class="modal-cadastro-conteudo">
+            <button class="modal-cadastro-fechar" type="button" aria-label="Fechar cadastro">&times;</button>
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h2 id="titulo-cadastro">Crie sua conta</h2>
+            <p class="modal-cadastro-descricao">Preencha seus dados para começar.</p>
+
+            <form class="formulario-cadastro">
+                <div class="campo-cadastro">
+                    <label for="cadastro-nome">Nome</label>
+                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-email">E-mail</label>
+                    <input type="email" id="cadastro-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-faculdade">Faculdade desejada</label>
+                    <input type="text" id="cadastro-faculdade" name="faculdade" list="faculdades-exatas" placeholder="Digite ou escolha uma faculdade" autocomplete="organization" required>
+                    <datalist id="faculdades-exatas">
+                        <option value="Unicamp">
+                        <option value="Unicampo">
+                        <option value="UNESP">
+                        <option value="USP">
+                        <option value="UFRJ">
+                        <option value="UFMG">
+                        <option value="UFPR">
+                        <option value="UFRGS">
+                        <option value="UFSC">
+                        <option value="UnB">
+                        <option value="ITA">
+                        <option value="UFABC">
+                        <option value="UTFPR">
+                        <option value="PUC-Rio">
+                        <option value="PUC-SP">
+                    </datalist>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-senha">Senha</label>
+                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" placeholder="Mínimo de 8 caracteres" required>
+                </div>
+                <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
+                <p class="cadastro-aviso" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </dialog>
     
     <script src="script.js"></script>
 </body>

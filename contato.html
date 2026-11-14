@@ -8,13 +8,28 @@
     <title>Contato</title>
 </head>
 <body>
+    <button class="btn-tema" type="button">
+        ☀️ Modo claro
+    </button>
+    
     <div class="inicio-contato">
         <h1>Contate-nos</h1>
         <h2>Suporte rápido e ágil para seus problemas(Não matemáticos kk)</h2>
 
+    
+    <script>
+        // Ele vê se o tema claro está salvo no navegador, caso contrário, aplica o modo escuro
+        try {
+            const temaSalvo = localStorage.getItem('tema');
+            document.documentElement.dataset.tema = temaSalvo === 'claro' ? 'claro' : 'escuro';
+        } catch (erro) {
+            document.documentElement.dataset.tema = 'escuro';
+        }
+    </script>
+
         <div class="btns-inicio">
             <button onclick="rolarParaBaixo()" class="btn-para-lista-contato">Mostre-me o contato</button>
-            <button class="btn-para-login">Entre agora</button>
+            <button type="button" class="btn-para-login">Cadastre-se</button>
             <a href="cursos.html"><button onclick="rolarParaBaixo()" class="btn-para-cursos">Ir para os cursos</button></a>
             <a href="index.html"><button class="btn-para-contato">Voltar para o inicio</button></a>
         </div>
@@ -74,9 +89,41 @@
 
     </form>
 
-    <section class="suporte">
-        
-    </section>
+    <div class="fim-contato">
+        <div class="btns-fim">
+            <a href="index.html"><button class="btn-voltar-index">Voltar ao início</button></a>
+        </div>
+    </div>
+
+    <dialog class="modal-cadastro" aria-labelledby="titulo-cadastro">
+        <div class="modal-cadastro-conteudo">
+            <button class="modal-cadastro-fechar" type="button" aria-label="Fechar cadastro">&times;</button>
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h2 id="titulo-cadastro">Crie sua conta</h2>
+            <p class="modal-cadastro-descricao">Preencha seus dados para começar.</p>
+
+            <form class="formulario-cadastro">
+                <div class="campo-cadastro">
+                    <label for="cadastro-nome">Nome</label>
+                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-email">E-mail</label>
+                    <input type="email" id="cadastro-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-faculdade">Faculdade desejada</label>
+                    <input type="text" id="cadastro-faculdade" name="faculdade" placeholder="Digite o nome da faculdade" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-senha">Senha</label>
+                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" placeholder="Mínimo de 8 caracteres" required>
+                </div>
+                <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
+                <p class="cadastro-aviso" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </dialog>
     
     <script src="script.js"></script>
 </body>

@@ -8,13 +8,16 @@
     <link rel="shortcut icon" href="images/EXATAS-NA-HORA.ico" type="image/x-icon">
 </head>
 <body>
+    <button class="btn-tema" type="button">
+        ☀️ Modo claro
+    </button>
     <div class="inicio-cursos">
         <h1>Cursos</h1>
         <h2>Conheça os melhores curso de exatas do Brasil!</h2>
 
         <div class="btns-inicio">
             <button onclick="rolarParaBaixo()" class="btn-para-lista-cursos">Conheça cursos</button>
-            <button class="btn-para-login">Entre agora</button>
+            <button type="button" class="btn-para-login">Cadastre-se</button>
             <a href="index.html"> <button class="btn-para-inicio">Voltar para o inicio</button></a>
             <a href="contato.html"><button class="btn-para-contato">Contate-nos</button></a>
         </div> 
@@ -25,56 +28,98 @@
     <section class="cursos">
         <h2 class="h2-cursos">Todos os cursos de exatas em um só lugar!</h2>
         <div class="div-cursos">
-            <div class="div-cards-cursos">
-                <p>Matemática</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Matemática">
+                <p class="curso-titulo">Matemática</p>
+                <p class="curso-descricao">Estuda números, estruturas e lógica, com aplicações em ciência, educação e tecnologia.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Fisíca</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Física">
+                <p class="curso-titulo">Física</p>
+                <p class="curso-descricao">Investiga as leis da natureza e suas aplicações em pesquisa, energia e inovação.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Engenharia Civil</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Engenharia Civil">
+                <p class="curso-titulo">Engenharia Civil</p>
+                <p class="curso-descricao">Planeja e acompanha obras, estruturas, edificações e projetos de infraestrutura.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Ciência da Computação</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Ciência da Computação">
+                <p class="curso-titulo">Ciência da Computação</p>
+                <p class="curso-descricao">Abrange programação, algoritmos, inteligência artificial e fundamentos da computação.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Engenharia de Software</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Engenharia de Software">
+                <p class="curso-titulo">Engenharia de Software</p>
+                <p class="curso-descricao">Desenvolve métodos para projetar, construir e manter sistemas e aplicativos.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Inteligência Artificial</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Inteligência Artificial">
+                <p class="curso-titulo">Inteligência Artificial</p>
+                <p class="curso-descricao">Explora sistemas que aprendem com dados, automação, modelos e aprendizado de máquina.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Engenharia da Computação</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Engenharia da Computação">
+                <p class="curso-titulo">Engenharia da Computação</p>
+                <p class="curso-descricao">Integra hardware e software para criar computadores, dispositivos e sistemas embarcados.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Química</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Química">
+                <p class="curso-titulo">Química</p>
+                <p class="curso-descricao">Estuda a composição e as transformações da matéria, em laboratório e na indústria.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Análise e Desenvolvimento de Sistemas</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Análise e Desenvolvimento de Sistemas">
+                <p class="curso-titulo">Análise e Desenvolvimento de Sistemas</p>
+                <p class="curso-descricao">Forma profissionais para analisar necessidades e criar soluções e aplicações digitais.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Engenharia Elétrica</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Engenharia Elétrica">
+                <p class="curso-titulo">Engenharia Elétrica</p>
+                <p class="curso-descricao">Trabalha com energia, circuitos, telecomunicações e sistemas de controle.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Engenharia Mecânica</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Engenharia Mecânica">
+                <p class="curso-titulo">Engenharia Mecânica</p>
+                <p class="curso-descricao">Projeta e desenvolve máquinas, equipamentos, processos e sistemas mecânicos.</p>
             </div>
-            <div class="div-cards-cursos">
-                <p>Sistemas de Informação</p>
-                <p>Informações</p>
+            <div class="div-cards-cursos" data-curso="Sistemas de Informação">
+                <p class="curso-titulo">Sistemas de Informação</p>
+                <p class="curso-descricao">Combina tecnologia e gestão para planejar sistemas que apoiam organizações.</p>
             </div>
         </div>
+
+        <section class="lista-cursos-salvos" aria-labelledby="titulo-lista-cursos">
+            <h2 id="titulo-lista-cursos">Minha lista de cursos</h2>
+            <p class="lista-cursos-vazia">Sua lista ainda está vazia.</p>
+            <ul class="lista-cursos-itens"></ul>
+            <p class="lista-cursos-aviso" role="status" aria-live="polite"></p>
+        </section>
     </section>
+
+    <div class="fim-cursos">
+        <div class="btns-fim">
+            <a href="index.html"><button class="btn-voltar-index">Voltar ao início</button></a>
+        </div>
+    </div>
+    <dialog class="modal-cadastro" aria-labelledby="titulo-cadastro">
+        <div class="modal-cadastro-conteudo">
+            <button class="modal-cadastro-fechar" type="button" aria-label="Fechar cadastro">&times;</button>
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h2 id="titulo-cadastro">Crie sua conta</h2>
+            <p class="modal-cadastro-descricao">Preencha seus dados para começar.</p>
+
+            <form class="formulario-cadastro">
+                <div class="campo-cadastro">
+                    <label for="cadastro-nome">Nome</label>
+                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-email">E-mail</label>
+                    <input type="email" id="cadastro-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-faculdade">Faculdade desejada</label>
+                    <input type="text" id="cadastro-faculdade" name="faculdade" placeholder="Digite o nome da faculdade" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-senha">Senha</label>
+                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" placeholder="Mínimo de 8 caracteres" required>
+                </div>
+                <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
+                <p class="cadastro-aviso" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </dialog>
     <script src="script.js"></script>
 </body>
 </html>

@@ -10,3 +10,209 @@ function rolarParaBaixo() {
         });
     }
 }
+//---------------------------------------TEMA----------------------------------------------
+// Atualiza os textos
+function atualizarBotaoTema() {
+    const botaoTema = document.querySelector('.btn-tema');
+
+    if (!botaoTema) return;
+
+    const temaClaroAtivo = document.documentElement.dataset.tema === 'claro';
+    botaoTema.textContent = temaClaroAtivo ? '🌙 Modo escuro' : '☀️ Modo claro';
+    botaoTema.setAttribute('aria-label', temaClaroAtivo ? 'Ativar modo escuro' : 'Ativar modo claro');
+}
+function alternarTema() {
+    const temaAtual = document.documentElement.dataset.tema || 'escuro';
+    const novoTema = temaAtual === 'escuro' ? 'claro' : 'escuro';
+
+    document.documentElement.dataset.tema = novoTema;
+
+    try {
+        localStorage.setItem('tema', novoTema);
+    } catch (erro) {
+        // O tema continua funcionando na página mesmo se o armazenamento não estiver disponível
+    }
+
+    atualizarBotaoTema();
+}
+
+// Atualiza o botão do tema e faz com que ele responda ao clique do usuário
+atualizarBotaoTema();
+const botaoTema = document.querySelector('.btn-tema');
+if (botaoTema) {
+    botaoTema.addEventListener('click', alternarTema);
+}
+//--------------------------------------------------------------------------------------------
+
+//---------------------------------------MODAL----------------------------------------------
+
+const modalCadastro = document.querySelector('.modal-cadastro');
+if (modalCadastro instanceof HTMLDialogElement) {
+    const botoesAbrirCadastro = document.querySelectorAll('.btn-para-login');
+    const botaoFecharCadastro = modalCadastro.querySelector('.modal-cadastro-fechar');
+    const primeiroCampoCadastro = modalCadastro.querySelector('#cadastro-nome');
+    const formularioCadastro = modalCadastro.querySelector('.formulario-cadastro');
+    const avisoCadastro = modalCadastro.querySelector('.cadastro-aviso');
+
+    botoesAbrirCadastro.forEach((botao) => {
+        botao.addEventListener('click', () => {
+            modalCadastro.showModal();
+            primeiroCampoCadastro.focus();
+        });
+    });
+
+    botaoFecharCadastro.addEventListener('click', () => modalCadastro.close());
+    modalCadastro.addEventListener('click', (evento) => {
+        if (evento.target === modalCadastro) {
+            modalCadastro.close();
+        }
+    });
+
+    formularioCadastro.addEventListener('submit', (evento) => {
+        evento.preventDefault();
+        avisoCadastro.textContent = 'Seus dados ainda não foram enviados. O cadastro será ativado quando a integração com o banco de dados estiver pronta.';
+    });
+}
+
+//---------------------------------------Lista de cursos----------------------------------------------
+
+
+const cardsCursos = document.querySelectorAll('.div-cards-cursos[data-curso]');
+const listaCursosItens = document.querySelector('.lista-cursos-itens');
+if (cardsCursos.length > 0 && listaCursosItens instanceof HTMLUListElement) {
+    const chaveListaCursos = 'exatasNaHora.cursosSalvos';
+    const cursosDisponiveis = new Set(
+        Array.from(cardsCursos, (card) => card.dataset.curso)
+    );
+    const listaCursosVazia = document.querySelector('.lista-cursos-vazia');
+    const avisoListaCursos = document.querySelector('.lista-cursos-aviso');
+    let cursosSalvos = [];
+
+    function salvarCursos(listaAtualizada) {
+        try {
+            localStorage.setItem(chaveListaCursos, JSON.stringify(listaAtualizada));
+            avisoListaCursos.textContent = '';
+            return true;
+        } catch (erro) {
+            avisoListaCursos.textContent = 'Não foi possível salvar sua lista neste navegador.';
+            return false;
+        }
+    }
+
+    function renderizarListaCursos() {
+        listaCursosItens.replaceChildren();
+        listaCursosVazia.hidden = cursosSalvos.length > 0;
+
+        cursosSalvos.forEach((curso) => {
+            const item = document.createElement('li');
+            const nome = document.createElement('span');
+            const botaoRemover = document.createElement('button');
+
+            nome.textContent = curso;
+            botaoRemover.type = 'button';
+            botaoRemover.className = 'btn-remover-curso';
+            botaoRemover.textContent = 'Remover';
+            botaoRemover.setAttribute('aria-label', `Remover ${curso} da lista`);
+            botaoRemover.addEventListener('click', () => {
+                const listaAtualizada = cursosSalvos.filter((cursoSalvo) => cursoSalvo !== curso);
+                if (salvarCursos(listaAtualizada)) {
+                    cursosSalvos = listaAtualizada;
+                    renderizarListaCursos();
+                    const card = Array.from(cardsCursos).find((elemento) => elemento.dataset.curso === curso);
+                    if (card) {
+                        const botaoAbrir = card.querySelector('.curso-card-abrir');
+                        const confirmacao = card.querySelector('.confirmacao-curso');
+                        const pergunta = confirmacao?.querySelector('p');
+                        const botaoAdicionar = confirmacao?.querySelector('.btn-adicionar-curso');
+                        const botaoCancelar = confirmacao?.querySelector('.btn-cancelar-curso');
+
+                        if (confirmacao && pergunta && botaoAdicionar && botaoCancelar) {
+                            pergunta.textContent = `Quer adicionar ${curso} à sua lista?`;
+                            botaoAdicionar.hidden = false;
+                            botaoCancelar.textContent = 'Cancelar';
+                            confirmacao.hidden = true;
+                        }
+
+                        if (botaoAbrir) {
+                            botaoAbrir.hidden = false;
+                            botaoAbrir.focus();
+                        }
+                    }
+                }
+            });
+
+            item.append(nome, botaoRemover);
+            listaCursosItens.append(item);
+        });
+    }
+
+    try {
+        const cursosArmazenados = JSON.parse(localStorage.getItem(chaveListaCursos) || '[]');
+        if (Array.isArray(cursosArmazenados)) {
+            cursosSalvos = [...new Set(cursosArmazenados.filter(
+                (curso) => typeof curso === 'string' && cursosDisponiveis.has(curso)
+            ))];
+        } else {
+            avisoListaCursos.textContent = 'Não foi possível carregar sua lista salva.';
+        }
+    } catch (erro) {
+        avisoListaCursos.textContent = 'Não foi possível carregar sua lista salva neste navegador.';
+    }
+
+    cardsCursos.forEach((card) => {
+        const curso = card.dataset.curso;
+        const botaoAbrir = document.createElement('button');
+        const confirmacao = document.createElement('div');
+        const pergunta = document.createElement('p');
+        const botaoAdicionar = document.createElement('button');
+        const botaoCancelar = document.createElement('button');
+
+        botaoAbrir.type = 'button';
+        botaoAbrir.className = 'curso-card-abrir';
+        botaoAbrir.setAttribute('aria-label', `${curso}. Clique para adicionar à sua lista`);
+        while (card.firstChild) {
+            botaoAbrir.append(card.firstChild);
+        }
+
+        confirmacao.className = 'confirmacao-curso';
+        confirmacao.hidden = true;
+        pergunta.textContent = `Quer adicionar ${curso} à sua lista?`;
+        botaoAdicionar.type = 'button';
+        botaoAdicionar.className = 'btn-adicionar-curso';
+        botaoAdicionar.textContent = 'Adicionar';
+        botaoCancelar.type = 'button';
+        botaoCancelar.className = 'btn-cancelar-curso';
+        botaoCancelar.textContent = 'Cancelar';
+        confirmacao.append(pergunta, botaoAdicionar, botaoCancelar);
+        card.append(botaoAbrir, confirmacao);
+
+        botaoAbrir.addEventListener('click', () => {
+            confirmacao.hidden = false;
+            botaoAbrir.hidden = true;
+            botaoAdicionar.focus();
+        });
+
+        botaoCancelar.addEventListener('click', () => {
+            confirmacao.hidden = true;
+            botaoAbrir.hidden = false;
+            botaoAbrir.focus();
+        });
+
+        botaoAdicionar.addEventListener('click', () => {
+            if (!cursosSalvos.includes(curso)) {
+                const listaAtualizada = [...cursosSalvos, curso];
+                if (!salvarCursos(listaAtualizada)) {
+                    return;
+                }
+                cursosSalvos = listaAtualizada;
+                renderizarListaCursos();
+            }
+
+            pergunta.textContent = `${curso} está na sua lista!`;
+            botaoAdicionar.hidden = true;
+            botaoCancelar.textContent = 'Fechar';
+        });
+    });
+
+    renderizarListaCursos();
+}
