@@ -10,6 +10,25 @@ function rolarParaBaixo() {
         });
     }
 }
+//---------------------------------------ALERT----------------------------------------------
+const modalBoasVindas = document.querySelector('.modal-boas-vindas');
+if (modalBoasVindas instanceof HTMLDialogElement) {
+    const botoesFecharBoasVindas = modalBoasVindas.querySelectorAll('.modal-boas-vindas-fechar, .btn-entendi-boas-vindas');
+
+    botoesFecharBoasVindas.forEach((botao) => {
+        botao.addEventListener('click', () => modalBoasVindas.close());
+    });
+
+    modalBoasVindas.addEventListener('click', (evento) => {
+        if (evento.target === modalBoasVindas) {
+            modalBoasVindas.close();
+        }
+    });
+
+    modalBoasVindas.showModal();
+}
+//--------------------------------------------------------------------------------------------
+
 //---------------------------------------TEMA----------------------------------------------
 // Atualiza os textos
 function atualizarBotaoTema() {
@@ -35,6 +54,68 @@ function alternarTema() {
 
     atualizarBotaoTema();
 }
+
+//---------------------------------------Busca de faculdades e cursos----------------------------------------------
+const filtrosListas = [
+    {
+        campo: '#filtro-faculdades',
+        cards: '.div-cards-faculdades',
+        resultado: '#resultado-faculdades'
+    },
+    {
+        campo: '#filtro-cursos',
+        cards: '.div-cards-cursos',
+        resultado: '#resultado-cursos'
+    },
+    {
+        campo: '#filtro-faculdades-info',
+        cards: '.faculdade-info',
+        resultado: '#resultado-faculdades-info'
+    }
+];
+
+filtrosListas.forEach(({ campo, cards: seletorCards, resultado }) => {
+    const campoBusca = document.querySelector(campo);
+    const cardsBusca = document.querySelectorAll(seletorCards);
+    const mensagemResultado = document.querySelector(resultado);
+
+    if (!(campoBusca instanceof HTMLInputElement) || cardsBusca.length === 0 || !(mensagemResultado instanceof HTMLElement)) {
+        return;
+    }
+
+    campoBusca.addEventListener('input', () => {
+        const termoBusca = campoBusca.value
+            .trim()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLocaleLowerCase('pt-BR');
+        let quantidadeVisivel = 0;
+
+        cardsBusca.forEach((card) => {
+            const textoCard = (card.textContent || '')
+                .normalize('NFD')
+                .replace(/[\u0300-\u036f]/g, '')
+                .toLocaleLowerCase('pt-BR');
+            const corresponde = textoCard.includes(termoBusca);
+
+            card.hidden = !corresponde;
+            if (corresponde) {
+                quantidadeVisivel += 1;
+            }
+        });
+
+        if (!termoBusca) {
+            mensagemResultado.textContent = '';
+        } else if (quantidadeVisivel === 0) {
+            mensagemResultado.textContent = 'Nenhum resultado encontrado. Tente outra busca.';
+        } else {
+            const descricaoResultado = quantidadeVisivel === 1
+                ? 'resultado encontrado.'
+                : 'resultados encontrados.';
+            mensagemResultado.textContent = `${quantidadeVisivel} ${descricaoResultado}`;
+        }
+    });
+});
 
 // Atualiza o botão do tema e faz com que ele responda ao clique do usuário
 atualizarBotaoTema();

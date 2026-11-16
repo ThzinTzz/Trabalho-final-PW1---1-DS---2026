@@ -32,6 +32,11 @@
 
     <section class="seçao-faculdades">
         <h2>As melhores faculdades de exatas do Brasil!</h2>
+        <div class="filtro-lista">
+            <label for="filtro-faculdades">Buscar faculdades por nome ou descrição</label>
+            <input id="filtro-faculdades" type="search" placeholder="Ex.: computação, Campinas, universidade pública">
+            <p class="filtro-resultado" id="resultado-faculdades" role="status" aria-live="polite"></p>
+        </div>
         
         <div class="div-faculdades">
             <div class="div-cards-faculdades">
@@ -135,6 +140,16 @@
                 <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
                 <p class="cadastro-aviso" role="status" aria-live="polite"></p>
             </form>
+        </div>
+    </dialog>
+
+    <dialog class="modal-boas-vindas" aria-labelledby="titulo-boas-vindas" aria-describedby="texto-boas-vindas">
+        <div class="modal-boas-vindas-conteudo">
+            <button class="modal-boas-vindas-fechar" type="button" aria-label="Fechar boas-vindas">&times;</button>
+            <p class="modal-boas-vindas-destaque">ExatasNaHora</p>
+            <h2 id="titulo-boas-vindas">Bem-vindo!</h2>
+            <p id="texto-boas-vindas">Iremos te mostrar e ajudar a escolher entre as maiores faculdades e cursos de exatas do país.</p>
+            <button class="btn-entendi-boas-vindas" type="button" autofocus>Vamos começar</button>
         </div>
     </dialog>
     

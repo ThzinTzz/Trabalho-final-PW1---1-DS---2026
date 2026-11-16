@@ -22,7 +22,7 @@
                 <a href="index.html"><button type="button" class="btn-para-inicio">Início</button></a>
             </div>
             <div class="btns-rolagem">
-                <button type="button" onclick="rolarParaBaixo()" class="btn-para-lista-cursos">Conheça os Cursos</button>
+                <button type="button" onclick="rolarParaBaixo()" class="btn-para-lista-cursos">Mostre-me os Cursos</button>
             </div>
         </div> 
     </div>
@@ -31,6 +31,11 @@
 
     <section class="cursos">
         <h2 class="h2-cursos">Todos os cursos de exatas em um só lugar!</h2>
+        <div class="filtro-lista">
+            <label for="filtro-cursos">Buscar cursos por nome ou descrição</label>
+            <input id="filtro-cursos" type="search" placeholder="Ex.: matemática, programação, energia">
+            <p class="filtro-resultado" id="resultado-cursos" role="status" aria-live="polite"></p>
+        </div>
         <div class="div-cursos">
             <div class="div-cards-cursos" data-curso="Matemática">
                 <p class="curso-titulo">Matemática</p>

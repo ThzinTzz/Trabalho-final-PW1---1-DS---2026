@@ -12,11 +12,12 @@
     <header class="inicio-informacoes">
         <h1>Faculdades e cursos</h1>
         <h2>Explore cursos de exatas oferecidos pelas universidades</h2>
+        <button type="button" class="btn-para-login">Cadastre-se</button>
         <a class="link-contato-fixo" href="contato.html"><button class="btn-para-contato" type="button">Contate-nos</button></a>
         <div class="acoes-inicio">
             <nav class="btns-inicio" aria-label="Navegação principal">
-                <a href="index.html"><button class="btn-para-inicio" type="button">Voltar ao início</button></a>
-                <a href="cursos.html"><button class="btn-para-cursos" type="button">Conheça os cursos</button></a>
+                <a href="index.html"><button class="btn-para-inicio" type="button">Início</button></a>
+                <a href="cursos.html"><button class="btn-para-cursos" type="button">Cursos</button></a>
             </nav>
             <div class="btns-rolagem">
                 <button onclick="rolarParaBaixo()" class="btn-para-lista-faculdades" type="button">Mostre-me as informações</button>
@@ -29,6 +30,11 @@
     <main class="informacoes-faculdades">
         <h2>Universidades da página inicial</h2>
         <p class="informacoes-introducao">Selecione uma faculdade para ver alguns cursos de graduação da área de exatas. A oferta pode variar por campus e processo seletivo; consulte o catálogo oficial para confirmar as opções atuais.</p>
+        <div class="filtro-lista">
+            <label for="filtro-faculdades-info">Buscar faculdade ou curso</label>
+            <input id="filtro-faculdades-info" type="search" placeholder="Ex.: Unicamp, matemática, engenharia">
+            <p class="filtro-resultado" id="resultado-faculdades-info" role="status" aria-live="polite"></p>
+        </div>
 
         <div class="lista-faculdades-info">
             <details class="faculdade-info">
@@ -198,6 +204,51 @@
     <footer class="fim-informacoes">
         <a href="index.html"><button class="btn-voltar-index" type="button">Voltar ao início</button></a>
     </footer>
+
+    <dialog class="modal-cadastro" aria-labelledby="titulo-cadastro">
+        <div class="modal-cadastro-conteudo">
+            <button class="modal-cadastro-fechar" type="button" aria-label="Fechar cadastro">&times;</button>
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h2 id="titulo-cadastro">Crie sua conta</h2>
+            <p class="modal-cadastro-descricao">Preencha seus dados para começar.</p>
+
+            <form class="formulario-cadastro">
+                <div class="campo-cadastro">
+                    <label for="cadastro-nome">Nome</label>
+                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" placeholder="Seu nome completo" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-email">E-mail</label>
+                    <input type="email" id="cadastro-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-faculdade">Faculdade desejada</label>
+                    <input type="text" id="cadastro-faculdade" name="faculdade" list="faculdades-exatas" placeholder="Digite ou escolha uma faculdade" autocomplete="organization" required>
+                    <datalist id="faculdades-exatas">
+                        <option value="Unicamp">
+                        <option value="UNESP">
+                        <option value="USP">
+                        <option value="UFRJ">
+                        <option value="UFMG">
+                        <option value="UFPR">
+                        <option value="UFRGS">
+                        <option value="UFSC">
+                        <option value="UnB">
+                        <option value="ITA">
+                        <option value="UFPE">
+                        <option value="UFC">
+                    </datalist>
+                </div>
+                <div class="campo-cadastro">
+                    <label for="cadastro-senha">Senha</label>
+                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" placeholder="Mínimo de 8 caracteres" required>
+                </div>
+                <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
+                <p class="cadastro-aviso" role="status" aria-live="polite"></p>
+            </form>
+        </div>
+    </dialog>
+
     <script src="script.js"></script>
 </body>
 </html>
