@@ -216,3 +216,29 @@ if (cardsCursos.length > 0 && listaCursosItens instanceof HTMLUListElement) {
 
     renderizarListaCursos();
 }
+
+//---------------------------------------Curiosidades de exatas----------------------------------------------
+const botaoProximoInsight = document.querySelector('#btn-proximo-insight');
+const mensagemInsight = document.querySelector('#mensagem-insight');
+
+if (botaoProximoInsight && mensagemInsight) {
+    const insightsExatas = [
+        'O número π é irracional: sua expansão decimal não termina nem entra em um padrão que se repete.',
+        'Por definição, 0! é igual a 1. Isso também faz a fórmula de combinações funcionar nos casos mais simples.',
+        'Computadores representam dados em binário, usando combinações dos dígitos 0 e 1.',
+        'Um plano pode ser coberto por hexágonos iguais sem deixar espaços ou sobreposições — como um mosaico.',
+        'O algoritmo de Euclides encontra o máximo divisor comum repetindo divisões com resto.',
+        'Há infinitos números primos: sempre é possível demonstrar que uma lista finita não contém todos eles.',
+        'Relógios nos satélites de GPS são afetados pela relatividade; o sistema corrige essa diferença para calcular posições com precisão.',
+        'Na topologia, uma caneca com alça e uma rosquinha são equivalentes: ambas têm um único furo.',
+        'Um googol é 1 seguido de 100 zeros — muito maior que a quantidade estimada de átomos no universo observável.',
+        'A identidade de Euler, e^(iπ) + 1 = 0, conecta cinco números fundamentais da matemática em uma única expressão.'
+    ];
+    let indiceInsight = -1;
+
+    botaoProximoInsight.addEventListener('click', () => {
+        indiceInsight = (indiceInsight + 1) % insightsExatas.length;
+        mensagemInsight.textContent = insightsExatas[indiceInsight];
+        botaoProximoInsight.textContent = 'Outra curiosidade';
+    });
+}

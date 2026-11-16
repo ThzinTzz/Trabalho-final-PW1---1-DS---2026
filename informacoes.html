@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculdades e cursos de exatas | ExatasNaHora</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/EXATAS-NA-HORA.ico" type="image/x-icon">
+</head>
+<body>
+    <button class="btn-tema" type="button">☀️ Modo claro</button>
+    <header class="inicio-informacoes">
+        <h1>Faculdades e cursos</h1>
+        <h2>Explore cursos de exatas oferecidos pelas universidades</h2>
+        <a class="link-contato-fixo" href="contato.html"><button class="btn-para-contato" type="button">Contate-nos</button></a>
+        <div class="acoes-inicio">
+            <nav class="btns-inicio" aria-label="Navegação principal">
+                <a href="index.html"><button class="btn-para-inicio" type="button">Voltar ao início</button></a>
+                <a href="cursos.html"><button class="btn-para-cursos" type="button">Conheça os cursos</button></a>
+            </nav>
+            <div class="btns-rolagem">
+                <button onclick="rolarParaBaixo()" class="btn-para-lista-faculdades" type="button">Mostre-me as informações</button>
+            </div>
+        </div>
+    </header>
+
+    <div id="destino"></div>
+
+    <main class="informacoes-faculdades">
+        <h2>Universidades da página inicial</h2>
+        <p class="informacoes-introducao">Selecione uma faculdade para ver alguns cursos de graduação da área de exatas. A oferta pode variar por campus e processo seletivo; consulte o catálogo oficial para confirmar as opções atuais.</p>
+
+        <div class="lista-faculdades-info">
+            <details class="faculdade-info">
+                <summary><span>Unicamp</span><span class="faculdade-local">Campinas e Limeira (SP)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Agrícola</li><li>Engenharia Ambiental</li>
+                        <li>Engenharia Civil</li><li>Engenharia de Alimentos</li><li>Engenharia de Computação</li>
+                        <li>Engenharia de Controle e Automação</li><li>Engenharia Elétrica</li><li>Engenharia Mecânica</li>
+                        <li>Engenharia Química</li><li>Estatística</li><li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www.dac.unicamp.br/portal/graduacao/cursos" target="_blank" rel="noopener noreferrer">Catálogo oficial de cursos da Unicamp</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UNESP</span><span class="faculdade-local">Diversos campi (SP)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Ambiental</li><li>Engenharia Civil</li>
+                        <li>Engenharia de Controle e Automação</li><li>Engenharia de Produção</li>
+                        <li>Engenharia Elétrica</li><li>Engenharia Mecânica</li><li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">Cursos e ingresso na UNESP</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>USP</span><span class="faculdade-local">Diversos campi (SP)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Aeronáutica</li><li>Engenharia Civil</li>
+                        <li>Engenharia de Computação</li><li>Engenharia de Produção</li><li>Engenharia Elétrica</li>
+                        <li>Engenharia Mecânica</li><li>Engenharia Química</li><li>Estatística</li>
+                        <li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www5.usp.br/ensino/graduacao/" target="_blank" rel="noopener noreferrer">Graduação na USP</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFRJ</span><span class="faculdade-local">Rio de Janeiro (RJ)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Civil</li><li>Engenharia de Computação e Informação</li>
+                        <li>Engenharia Elétrica</li><li>Engenharia Mecânica</li><li>Engenharia Metalúrgica</li>
+                        <li>Engenharia Naval e Oceânica</li><li>Engenharia de Petróleo</li><li>Engenharia de Produção</li>
+                        <li>Engenharia Química</li><li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://acessograduacao.ufrj.br/" target="_blank" rel="noopener noreferrer">Acesso à graduação da UFRJ</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFMG</span><span class="faculdade-local">Belo Horizonte (MG)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Civil</li><li>Engenharia de Controle e Automação</li>
+                        <li>Engenharia Elétrica</li><li>Engenharia Mecânica</li><li>Engenharia Metalúrgica</li>
+                        <li>Engenharia de Minas</li><li>Engenharia de Produção</li><li>Engenharia Química</li>
+                        <li>Estatística</li><li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www.ufmg.br/prograd/" target="_blank" rel="noopener noreferrer">Pró-Reitoria de Graduação da UFMG</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>ITA</span><span class="faculdade-local">São José dos Campos (SP)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Engenharia Aeronáutica</li><li>Engenharia Aeroespacial</li><li>Engenharia Civil-Aeronáutica</li>
+                        <li>Engenharia de Computação</li><li>Engenharia Eletrônica</li><li>Engenharia Mecânica-Aeronáutica</li>
+                    </ul>
+                    <a href="https://www.ita.br/graduacao" target="_blank" rel="noopener noreferrer">Graduação no ITA</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFRGS</span><span class="faculdade-local">Porto Alegre (RS)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Ambiental</li><li>Engenharia Civil</li>
+                        <li>Engenharia de Computação</li><li>Engenharia de Materiais</li><li>Engenharia Elétrica</li>
+                        <li>Engenharia Mecânica</li><li>Engenharia Química</li><li>Estatística</li>
+                        <li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www.ufrgs.br/coperse/" target="_blank" rel="noopener noreferrer">Ingresso e cursos na UFRGS</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFSC</span><span class="faculdade-local">Diversos campi (SC)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Civil</li><li>Engenharia de Controle e Automação</li>
+                        <li>Engenharia de Materiais</li><li>Engenharia de Produção</li><li>Engenharia Elétrica</li>
+                        <li>Engenharia Mecânica</li><li>Engenharia Química</li><li>Física</li><li>Matemática</li>
+                        <li>Química</li><li>Sistemas de Informação</li>
+                    </ul>
+                    <a href="https://cagr.sistemas.ufsc.br/" target="_blank" rel="noopener noreferrer">Sistema de cursos de graduação da UFSC</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFPR</span><span class="faculdade-local">Diversos campi (PR)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Ambiental</li><li>Engenharia Cartográfica e de Agrimensura</li>
+                        <li>Engenharia Civil</li><li>Engenharia de Bioprocessos e Biotecnologia</li>
+                        <li>Engenharia Elétrica</li><li>Engenharia Mecânica</li><li>Engenharia Química</li>
+                        <li>Engenharia de Produção</li><li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www.prograd.ufpr.br/portal/" target="_blank" rel="noopener noreferrer">Pró-Reitoria de Graduação da UFPR</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UnB</span><span class="faculdade-local">Brasília (DF)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Ambiental</li><li>Engenharia Civil</li>
+                        <li>Engenharia de Computação</li><li>Engenharia de Redes de Comunicação</li>
+                        <li>Engenharia de Produção</li><li>Engenharia Elétrica</li><li>Engenharia Mecânica</li>
+                        <li>Engenharia Mecatrônica</li><li>Engenharia Química</li><li>Estatística</li>
+                        <li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www.unb.br/graduacao/cursos" target="_blank" rel="noopener noreferrer">Lista de cursos da UnB</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFPE</span><span class="faculdade-local">Recife e outros campi (PE)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Civil</li><li>Engenharia da Computação</li>
+                        <li>Engenharia de Controle e Automação</li><li>Engenharia de Materiais</li>
+                        <li>Engenharia de Produção</li><li>Engenharia Elétrica</li><li>Engenharia Mecânica</li>
+                        <li>Engenharia Química</li><li>Estatística</li><li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://www.ufpe.br/prograd" target="_blank" rel="noopener noreferrer">Pró-Reitoria de Graduação da UFPE</a>
+                </div>
+            </details>
+
+            <details class="faculdade-info">
+                <summary><span>UFC</span><span class="faculdade-local">Diversos campi (CE)</span></summary>
+                <div class="faculdade-info-conteudo">
+                    <ul>
+                        <li>Ciência da Computação</li><li>Engenharia Ambiental</li><li>Engenharia Civil</li>
+                        <li>Engenharia de Computação</li><li>Engenharia de Energias Renováveis</li>
+                        <li>Engenharia de Produção</li><li>Engenharia Elétrica</li><li>Engenharia Mecânica</li>
+                        <li>Engenharia Metalúrgica</li><li>Engenharia Química</li><li>Estatística</li>
+                        <li>Física</li><li>Matemática</li><li>Química</li>
+                    </ul>
+                    <a href="https://prograd.ufc.br/pt/cursos-de-graduacao/" target="_blank" rel="noopener noreferrer">Cursos de graduação da UFC</a>
+                </div>
+            </details>
+        </div>
+
+        <section class="insight-exatas" aria-labelledby="titulo-insight">
+            <p class="insight-etiqueta">Pausa para pensar</p>
+            <h2 id="titulo-insight">Curiosidades de exatas</h2>
+            <p class="insight-mensagem" id="mensagem-insight" aria-live="polite">Clique no botão para descobrir uma curiosidade.</p>
+            <button class="btn-proximo-insight" id="btn-proximo-insight" type="button">Revelar curiosidade</button>
+        </section>
+    </main>
+
+    <footer class="fim-informacoes">
+        <a href="index.html"><button class="btn-voltar-index" type="button">Voltar ao início</button></a>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
