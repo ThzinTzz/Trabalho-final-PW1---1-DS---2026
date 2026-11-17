@@ -10,6 +10,73 @@ function rolarParaBaixo() {
         });
     }
 }
+
+try {
+    const temaSalvo = localStorage.getItem('tema');
+    document.documentElement.dataset.tema = temaSalvo === 'claro' ? 'claro' : 'escuro';
+} catch (erro) {
+    document.documentElement.dataset.tema = 'escuro';
+}
+
+const formularioSuporte = document.querySelector('.suporte');
+if (formularioSuporte instanceof HTMLFormElement) {
+    const avisoSuporte = formularioSuporte.querySelector('.suporte-aviso');
+    const botaoEnviarSuporte = formularioSuporte.querySelector('button[type="submit"]');
+
+    formularioSuporte.addEventListener('submit', async (evento) => {
+        evento.preventDefault();
+        avisoSuporte.textContent = '';
+        botaoEnviarSuporte.disabled = true;
+
+        try {
+            let resposta;
+            try {
+                resposta = await fetch('api/support.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(new FormData(formularioSuporte).entries()))
+                });
+            } catch (erro) {
+                avisoSuporte.textContent = 'Não foi possível conectar ao servidor. Verifique se o Apache e o MySQL estão ativos.';
+                return;
+            }
+
+            let resultado;
+            try {
+                resultado = await resposta.json();
+            } catch (erro) {
+                avisoSuporte.textContent = 'O servidor retornou uma resposta inválida. Verifique a configuração do PHP.';
+                return;
+            }
+
+            if (!resultado || typeof resultado !== 'object' || Array.isArray(resultado)) {
+                avisoSuporte.textContent = 'O servidor retornou uma resposta inválida.';
+                return;
+            }
+
+            if (!resposta.ok) {
+                avisoSuporte.textContent = typeof resultado.message === 'string'
+                    ? resultado.message
+                    : 'Não foi possível enviar sua solicitação.';
+                return;
+            }
+
+            if (typeof resultado.message !== 'string') {
+                avisoSuporte.textContent = 'O servidor retornou uma resposta inválida.';
+                return;
+            }
+
+            avisoSuporte.textContent = resultado.message;
+            formularioSuporte.reset();
+        } finally {
+            botaoEnviarSuporte.disabled = false;
+        }
+    });
+}
+
 //---------------------------------------ALERT----------------------------------------------
 const modalBoasVindas = document.querySelector('.modal-boas-vindas');
 if (modalBoasVindas instanceof HTMLDialogElement) {
@@ -127,13 +194,109 @@ if (botaoTema) {
 
 //---------------------------------------MODAL----------------------------------------------
 
+const cursosPorFaculdade = {
+    Unicamp: [
+        'Ciência da Computação', 'Engenharia Agrícola', 'Engenharia Ambiental', 'Engenharia Civil',
+        'Engenharia de Alimentos', 'Engenharia de Computação', 'Engenharia de Controle e Automação',
+        'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Química', 'Estatística', 'Física',
+        'Matemática', 'Química'
+    ],
+    UNESP: [
+        'Ciência da Computação', 'Engenharia Ambiental', 'Engenharia Civil',
+        'Engenharia de Controle e Automação', 'Engenharia de Produção', 'Engenharia Elétrica',
+        'Engenharia Mecânica', 'Física', 'Matemática', 'Química'
+    ],
+    USP: [
+        'Ciência da Computação', 'Engenharia Aeronáutica', 'Engenharia Civil',
+        'Engenharia de Computação', 'Engenharia de Produção', 'Engenharia Elétrica',
+        'Engenharia Mecânica', 'Engenharia Química', 'Estatística', 'Física', 'Matemática', 'Química'
+    ],
+    UFRJ: [
+        'Ciência da Computação', 'Engenharia Civil', 'Engenharia de Computação e Informação',
+        'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Metalúrgica',
+        'Engenharia Naval e Oceânica', 'Engenharia de Petróleo', 'Engenharia de Produção',
+        'Engenharia Química', 'Física', 'Matemática', 'Química'
+    ],
+    UFMG: [
+        'Ciência da Computação', 'Engenharia Civil', 'Engenharia de Controle e Automação',
+        'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Metalúrgica',
+        'Engenharia de Minas', 'Engenharia de Produção', 'Engenharia Química', 'Estatística',
+        'Física', 'Matemática', 'Química'
+    ],
+    ITA: [
+        'Engenharia Aeronáutica', 'Engenharia Aeroespacial', 'Engenharia Civil-Aeronáutica',
+        'Engenharia de Computação', 'Engenharia Eletrônica', 'Engenharia Mecânica-Aeronáutica'
+    ],
+    UFRGS: [
+        'Ciência da Computação', 'Engenharia Ambiental', 'Engenharia Civil',
+        'Engenharia de Computação', 'Engenharia de Materiais', 'Engenharia Elétrica',
+        'Engenharia Mecânica', 'Engenharia Química', 'Estatística', 'Física', 'Matemática', 'Química'
+    ],
+    UFSC: [
+        'Ciência da Computação', 'Engenharia Civil', 'Engenharia de Controle e Automação',
+        'Engenharia de Materiais', 'Engenharia de Produção', 'Engenharia Elétrica',
+        'Engenharia Mecânica', 'Engenharia Química', 'Física', 'Matemática', 'Química',
+        'Sistemas de Informação'
+    ],
+    UFPR: [
+        'Ciência da Computação', 'Engenharia Ambiental', 'Engenharia Cartográfica e de Agrimensura',
+        'Engenharia Civil', 'Engenharia de Bioprocessos e Biotecnologia', 'Engenharia Elétrica',
+        'Engenharia Mecânica', 'Engenharia Química', 'Engenharia de Produção', 'Física',
+        'Matemática', 'Química'
+    ],
+    UnB: [
+        'Ciência da Computação', 'Engenharia Ambiental', 'Engenharia Civil',
+        'Engenharia de Computação', 'Engenharia de Redes de Comunicação', 'Engenharia de Produção',
+        'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Mecatrônica',
+        'Engenharia Química', 'Estatística', 'Física', 'Matemática', 'Química'
+    ],
+    UFPE: [
+        'Ciência da Computação', 'Engenharia Civil', 'Engenharia da Computação',
+        'Engenharia de Controle e Automação', 'Engenharia de Materiais', 'Engenharia de Produção',
+        'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Química', 'Estatística',
+        'Física', 'Matemática', 'Química'
+    ],
+    UFC: [
+        'Ciência da Computação', 'Engenharia Ambiental', 'Engenharia Civil',
+        'Engenharia de Computação', 'Engenharia de Energias Renováveis', 'Engenharia de Produção',
+        'Engenharia Elétrica', 'Engenharia Mecânica', 'Engenharia Metalúrgica',
+        'Engenharia Química', 'Estatística', 'Física', 'Matemática', 'Química'
+    ]
+};
+
 const modalCadastro = document.querySelector('.modal-cadastro');
 if (modalCadastro instanceof HTMLDialogElement) {
     const botoesAbrirCadastro = document.querySelectorAll('.btn-para-login');
     const botaoFecharCadastro = modalCadastro.querySelector('.modal-cadastro-fechar');
     const primeiroCampoCadastro = modalCadastro.querySelector('#cadastro-nome');
+    const seletorFaculdade = modalCadastro.querySelector('#cadastro-faculdade');
+    const seletorCurso = modalCadastro.querySelector('#cadastro-curso');
     const formularioCadastro = modalCadastro.querySelector('.formulario-cadastro');
     const avisoCadastro = modalCadastro.querySelector('.cadastro-aviso');
+
+    function atualizarCursosDisponiveis() {
+        const cursosDisponiveis = cursosPorFaculdade[seletorFaculdade.value] || [];
+        const opcaoInicial = document.createElement('option');
+
+        opcaoInicial.value = '';
+        opcaoInicial.disabled = true;
+        opcaoInicial.selected = true;
+        opcaoInicial.textContent = cursosDisponiveis.length
+            ? 'Selecione um curso'
+            : 'Selecione uma faculdade primeiro';
+        seletorCurso.replaceChildren(opcaoInicial);
+        seletorCurso.disabled = cursosDisponiveis.length === 0;
+
+        cursosDisponiveis.forEach((curso) => {
+            const opcaoCurso = document.createElement('option');
+            opcaoCurso.value = curso;
+            opcaoCurso.textContent = curso;
+            seletorCurso.append(opcaoCurso);
+        });
+    }
+
+    seletorFaculdade.addEventListener('change', atualizarCursosDisponiveis);
+    atualizarCursosDisponiveis();
 
     botoesAbrirCadastro.forEach((botao) => {
         botao.addEventListener('click', () => {
@@ -149,9 +312,235 @@ if (modalCadastro instanceof HTMLDialogElement) {
         }
     });
 
-    formularioCadastro.addEventListener('submit', (evento) => {
+    formularioCadastro.addEventListener('submit', async (evento) => {
         evento.preventDefault();
-        avisoCadastro.textContent = 'Seus dados ainda não foram enviados. O cadastro será ativado quando a integração com o banco de dados estiver pronta.';
+        const botaoEnviarCadastro = formularioCadastro.querySelector('button[type="submit"]');
+        botaoEnviarCadastro.disabled = true;
+        avisoCadastro.textContent = '';
+
+        try {
+            let resposta;
+            try {
+                resposta = await fetch('api/register.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(new FormData(formularioCadastro).entries()))
+                });
+            } catch (erro) {
+                avisoCadastro.textContent = 'Não foi possível conectar ao servidor. Verifique se o Apache e o MySQL estão ativos.';
+                return;
+            }
+
+            let resultado;
+            try {
+                resultado = await resposta.json();
+            } catch (erro) {
+                avisoCadastro.textContent = 'O servidor retornou uma resposta inválida. Verifique a configuração do PHP.';
+                return;
+            }
+
+            if (!resultado || typeof resultado !== 'object' || Array.isArray(resultado)) {
+                avisoCadastro.textContent = 'O servidor retornou uma resposta inválida.';
+                return;
+            }
+
+            if (!resposta.ok) {
+                avisoCadastro.textContent = typeof resultado.message === 'string'
+                    ? resultado.message
+                    : 'Não foi possível concluir o cadastro.';
+                return;
+            }
+
+            if (typeof resultado.message !== 'string') {
+                avisoCadastro.textContent = 'O servidor retornou uma resposta inválida.';
+                return;
+            }
+
+            avisoCadastro.textContent = resultado.message;
+            formularioCadastro.reset();
+            atualizarCursosDisponiveis();
+        } finally {
+            botaoEnviarCadastro.disabled = false;
+        }
+    });
+}
+
+const modalLogin = document.querySelector('.modal-login');
+if (modalLogin instanceof HTMLDialogElement) {
+    const botoesAbrirLogin = document.querySelectorAll('.btn-para-entrar');
+    const botaoFecharLogin = modalLogin.querySelector('.modal-login-fechar');
+    const formularioLogin = modalLogin.querySelector('.formulario-login');
+    const campoEmailLogin = modalLogin.querySelector('#login-email');
+    const avisoLogin = modalLogin.querySelector('.login-aviso');
+    const botaoEnviarLogin = formularioLogin.querySelector('button[type="submit"]');
+
+    botoesAbrirLogin.forEach((botao) => {
+        botao.addEventListener('click', () => {
+            modalLogin.showModal();
+            campoEmailLogin.focus();
+        });
+    });
+
+    botaoFecharLogin.addEventListener('click', () => modalLogin.close());
+    modalLogin.addEventListener('click', (evento) => {
+        if (evento.target === modalLogin) {
+            modalLogin.close();
+        }
+    });
+
+    formularioLogin.addEventListener('submit', async (evento) => {
+        evento.preventDefault();
+        avisoLogin.textContent = '';
+        botaoEnviarLogin.disabled = true;
+
+        try {
+            let resposta;
+            try {
+                resposta = await fetch('api/login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    credentials: 'same-origin',
+                    body: JSON.stringify(Object.fromEntries(new FormData(formularioLogin).entries()))
+                });
+            } catch (erro) {
+                avisoLogin.textContent = 'Não foi possível conectar ao servidor. Verifique se o Apache e o MySQL estão ativos.';
+                return;
+            }
+
+            let resultado;
+            try {
+                resultado = await resposta.json();
+            } catch (erro) {
+                avisoLogin.textContent = 'O servidor retornou uma resposta inválida. Verifique a configuração do PHP.';
+                return;
+            }
+
+            if (!resultado || typeof resultado !== 'object' || Array.isArray(resultado)) {
+                avisoLogin.textContent = 'O servidor retornou uma resposta inválida.';
+                return;
+            }
+
+            if (!resposta.ok) {
+                avisoLogin.textContent = typeof resultado.message === 'string'
+                    ? resultado.message
+                    : 'Não foi possível fazer login.';
+                return;
+            }
+
+            if (resultado.authenticated !== true) {
+                avisoLogin.textContent = 'O servidor retornou uma resposta inválida.';
+                return;
+            }
+
+            window.location.assign('perfil.html');
+        } finally {
+            botaoEnviarLogin.disabled = false;
+        }
+    });
+
+    if (new URLSearchParams(window.location.search).get('login') === 'required') {
+        const modalBoasVindas = document.querySelector('.modal-boas-vindas');
+        if (modalBoasVindas instanceof HTMLDialogElement && modalBoasVindas.open) {
+            modalBoasVindas.close();
+        }
+        modalLogin.showModal();
+        campoEmailLogin.focus();
+    }
+}
+
+const dadosPerfil = document.querySelector('.dados-perfil');
+if (dadosPerfil instanceof HTMLElement) {
+    const avisoPerfil = document.querySelector('.perfil-aviso');
+    const botaoSair = document.querySelector('.btn-sair');
+    const valoresPerfil = {
+        nome: document.querySelector('#perfil-nome'),
+        email: document.querySelector('#perfil-email'),
+        faculdade: document.querySelector('#perfil-faculdade'),
+        curso: document.querySelector('#perfil-curso')
+    };
+
+    async function carregarPerfil() {
+        let resposta;
+        try {
+            resposta = await fetch('api/profile.php', {
+                headers: { 'Accept': 'application/json' },
+                credentials: 'same-origin'
+            });
+        } catch (erro) {
+            avisoPerfil.textContent = 'Não foi possível conectar ao servidor para carregar seu perfil.';
+            return;
+        }
+
+        let resultado;
+        try {
+            resultado = await resposta.json();
+        } catch (erro) {
+            avisoPerfil.textContent = 'O servidor retornou uma resposta inválida ao carregar o perfil.';
+            return;
+        }
+
+        if (!resultado || typeof resultado !== 'object' || Array.isArray(resultado)) {
+            avisoPerfil.textContent = 'O servidor retornou uma resposta inválida ao carregar o perfil.';
+            return;
+        }
+
+        if (resposta.status === 401) {
+            window.location.assign('index.html?login=required');
+            return;
+        }
+
+        const usuarioPerfil = resultado.user;
+        if (
+            !resposta.ok ||
+            !usuarioPerfil ||
+            typeof usuarioPerfil !== 'object' ||
+            Array.isArray(usuarioPerfil) ||
+            ['nome', 'email', 'faculdade', 'curso'].some((campo) => typeof usuarioPerfil[campo] !== 'string')
+        ) {
+            avisoPerfil.textContent = typeof resultado.message === 'string'
+                ? resultado.message
+                : 'Não foi possível carregar seu perfil.';
+            return;
+        }
+
+        valoresPerfil.nome.textContent = usuarioPerfil.nome;
+        valoresPerfil.email.textContent = usuarioPerfil.email;
+        valoresPerfil.faculdade.textContent = usuarioPerfil.faculdade;
+        valoresPerfil.curso.textContent = usuarioPerfil.curso;
+        avisoPerfil.textContent = '';
+        botaoSair.hidden = false;
+    }
+
+    carregarPerfil();
+
+    botaoSair.addEventListener('click', async () => {
+        botaoSair.disabled = true;
+        avisoPerfil.textContent = '';
+
+        try {
+            const resposta = await fetch('api/logout.php', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                credentials: 'same-origin'
+            });
+
+            if (!resposta.ok) {
+                avisoPerfil.textContent = 'Não foi possível encerrar sua sessão.';
+                return;
+            }
+
+            window.location.assign('index.html');
+        } catch (erro) {
+            avisoPerfil.textContent = 'Não foi possível conectar ao servidor para encerrar sua sessão.';
+        } finally {
+            botaoSair.disabled = false;
+        }
     });
 }
 

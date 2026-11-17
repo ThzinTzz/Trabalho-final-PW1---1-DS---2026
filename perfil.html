@@ -1,0 +1,57 @@
+<!--Informa ao navegador que o documento é um documento HTML-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!--Define a codificação de caracteres como UTF-8(Para que o usuário possa usar acentos, "ç", "£", etc)-->
+    <meta charset="UTF-8">
+
+    <!--Configura a janela de visualização do usuário para que se adapte a largura de seu dispositivo. Também define o zoom inicial como 100%(1.0)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Título do site-->
+    <title>Meu perfil | ExatasNaHora</title>
+
+    <!--Relaciona o HTML com o arquivo "style.css"-->
+    <link rel="stylesheet" href="style.css">
+
+    <!--Adiciona o favicon(imagem que fica ao lado do título do site)-->
+    <link rel="shortcut icon" href="images/EXATAS-NA-HORA.ico" type="image/x-icon">
+</head>
+<body>
+    <!--Botão para alterar modo-->
+    <button class="btn-tema" type="button">☀️ Modo claro</button>
+
+    <main class="tela-autenticacao">
+        <section class="cartao-autenticacao cartao-perfil" aria-labelledby="titulo-perfil">
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h1 id="titulo-perfil">Meu perfil</h1>
+            <p class="nota-autenticacao">Confira os dados salvos no seu cadastro.</p>
+
+            <dl class="dados-perfil">
+                <div>
+                    <dt>Nome</dt>
+                    <dd id="perfil-nome">Carregando...</dd>
+                </div>
+                <div>
+                    <dt>E-mail</dt>
+                    <dd id="perfil-email">Carregando...</dd>
+                </div>
+                <div>
+                    <dt>Faculdade escolhida</dt>
+                    <dd id="perfil-faculdade">Carregando...</dd>
+                </div>
+                <div>
+                    <dt>Curso escolhido</dt>
+                    <dd id="perfil-curso">Carregando...</dd>
+                </div>
+            </dl>
+
+            <p class="perfil-aviso" role="status" aria-live="polite"></p>
+            <button class="btn-enviar-cadastro btn-sair" type="button" hidden>Sair da conta</button>
+        </section>
+    </main>
+
+    <!--Relaciona o HTML com o arquivo "script.js"-->
+    <script src="script.js"></script>
+</body>
+</html>

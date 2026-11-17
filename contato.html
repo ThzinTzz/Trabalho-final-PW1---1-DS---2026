@@ -1,104 +1,109 @@
+<!--Informa ao navegador que o documento é um documento HTML-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!--Define a codificação de caracteres como UTF-8(Para que o usuário possa usar acentos, "ç", "£", etc)-->
     <meta charset="UTF-8">
+
+    <!--Configura a janela de visualização do usuário para que se adapte a largura de seu dispositivo. Também define o zoom inicial como 100%(1.0)-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Relaciona o HTML com o arquivo "style.css"-->
     <link rel="stylesheet" href="style.css">
+
+    <!--Adiciona o favicon(imagem que fica ao lado do título do site)-->
     <link rel="shortcut icon" href="images/EXATAS-NA-HORA.ico" type="image/x-icon">
+
+    <!--Título do site-->
     <title>Contato</title>
 </head>
 <body>
+    <!--Botão para alterar modo-->
     <button class="btn-tema" type="button">
         ☀️ Modo claro
     </button>
     
+    <!--Início da aba contato, com apresentação e os botões-->
     <div class="inicio-contato">
         <h1>Contate-nos</h1>
-        <h2>Suporte rápido e ágil para seus problemas(Não matemáticos kk)</h2>
+        <h2>Suporte rápido e ágil para seus problemas (não matemáticos, kk!)</h2>
 
+        <!--Botões para ir para outras abas-->
         <button type="button" class="btn-para-login">Cadastre-se</button>
-        <a class="link-contato-fixo" href="index.html"><button type="button" class="btn-para-contato">Início</button></a>
+        <button type="button" class="btn-para-entrar">Entrar</button>
+        <a class="link-contato-fixo btn-para-contato" href="index.html">Início</a>
     
-    <script>
-        // Ele vê se o tema claro está salvo no navegador, caso contrário, aplica o modo escuro
-        try {
-            const temaSalvo = localStorage.getItem('tema');
-            document.documentElement.dataset.tema = temaSalvo === 'claro' ? 'claro' : 'escuro';
-        } catch (erro) {
-            document.documentElement.dataset.tema = 'escuro';
-        }
-    </script>
-
         <div class="acoes-inicio">
             <div class="btns-inicio">
-                <a href="cursos.html"><button type="button" class="btn-para-cursos">Cursos</button></a>
+                <a href="cursos.html" class="btn-para-cursos">Cursos</a>
             </div>
             <div class="btns-rolagem">
                 <button type="button" onclick="rolarParaBaixo()" class="btn-para-lista-contato">Mostre-me o contato</button>
             </div>
         </div>
     </div>
-
+    
+    <!--Onde o botão de rolagem deve parar-->
     <div id="destino"></div>
 
-    <h1 class="h1-suportecontato">Contato</h1>
-    <section class="contato">
-        <h2>Como nos contatar?</h2>
-        <ul>
-            <a href="https://www.whatsapp.com/">
-                <div class="contato-apps">
+    <!--Botões dos aplicativos de conato-->
+    <main class="conteudo-contato">
+        <h2 class="h1-suportecontato">Contato</h2>
+        <section class="contato" aria-labelledby="titulo-contato">
+            <h3 id="titulo-contato">Como nos contatar?</h3>
+            <!--Os botões com a imagem do aplicativo e seu nome-->
+            <ul>
+                <li><a class="contato-apps" href="https://www.whatsapp.com/">
                     <img class="img-icons" src="./images/01_whatsapp.png" alt="">
-                    <p class="p-icons">Whatsapp</p>
-                </div>
-            </a>
-            <a href="https://www.instagram.com/">
-                <div class="contato-apps">
+                    <span class="p-icons">Whatsapp</span>
+                </a></li>
+                <li><a class="contato-apps" href="https://www.instagram.com/">
                     <img class="img-icons" src="./images/02_instagram.png" alt="">
-                    <p class="p-icons">Instagram</p>
-                </div>
-            </a>
-            <a href="https://www.facebook.com/">
-                <div class="contato-apps">
+                    <span class="p-icons">Instagram</span>
+                </a></li>
+                <li><a class="contato-apps" href="https://www.facebook.com/">
                     <img class="img-icons" src="./images/03_facebook.png" alt="">
-                    <p class="p-icons">Facebook</p>
-                </div>
-            </a>
-            <a href="https://www.linkedin.com/login/pt/">
-                <div class="contato-apps">
+                    <span class="p-icons">Facebook</span>
+                </a></li>
+                <li><a class="contato-apps" href="https://www.linkedin.com/login/pt/">
                     <img class="img-icons" src="./images/04_linkedin.png" alt="">
-                    <p class="p-icons">Linkedin</p>
-                </div>
-            </a>
-        </ul>
-    </section>
-    <h1 class="h1-suportecontato">Suporte</h1>
-    <form class="suporte" method="post">
-        
-        <div class="campo-grupo">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" placeholder="Digite seu nome..." required>
-        </div>
-
-        <div class="campo-grupo">
-            <label for="email">Email</label>
-            <input type="email" id="nome" name="email" placeholder="Digite seu email..."> 
+                    <span class="p-icons">Linkedin</span>
+                </a></li>
+            </ul>
+        </section>
+        <!--Aba onde o usuário escreve o suporte e enviar para o banco de dados-->
+        <h2 class="h1-suportecontato">Suporte</h2>
+        <form class="suporte" method="post">
             
-        </div>
+            <!--Área onde o usuário digita o nome-->
+            <div class="campo-grupo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" maxlength="120" placeholder="Digite seu nome..." required>
+            </div>
+            <!--Área onde o usuário digita o e-mail-->
+            <div class="campo-grupo">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" maxlength="254" placeholder="Digite seu email..." required>
+                
+            </div>
+            <!--Área onde o usuário digita a descrição-->
+            <div class="campo-grupo">
+                <label for="descricao">Descrição</label>
+                <textarea class="descricao" id="descricao" name="descricao" rows="5" maxlength="5000" placeholder="Digite aqui seu problema..." required></textarea>
+                <button class="enviar-suporte" type="submit">Enviar</button>
+            </div>
+            <p class="suporte-aviso" role="status" aria-live="polite"></p>
+        </form>
+    </main>
 
-        <div class="campo-grupo">
-            <label for="descricao">Descrição</label>
-            <input class="descricao" type="text" id="descricao" name="descricao" placeholder="Digite aqui seu problema..."> 
-            <button class="enviar-suporte" type="submit">Enviar</button>
-        </div>
-
-    </form>
-
+    <!--Botão para voltar ao início-->
     <div class="fim-contato">
         <div class="btns-fim">
-            <a href="index.html"><button class="btn-voltar-index">Voltar ao início</button></a>
+            <a href="index.html" class="btn-voltar-index">Voltar ao início</a>
         </div>
     </div>
 
+    <!--Modal do cadastro-->
     <dialog class="modal-cadastro" aria-labelledby="titulo-cadastro">
         <div class="modal-cadastro-conteudo">
             <button class="modal-cadastro-fechar" type="button" aria-label="Fechar cadastro">&times;</button>
@@ -106,29 +111,90 @@
             <h2 id="titulo-cadastro">Crie sua conta</h2>
             <p class="modal-cadastro-descricao">Preencha seus dados para começar.</p>
 
-            <form class="formulario-cadastro">
+            <form class="formulario-cadastro" method="post">
+                <!--Área de nome do cadastro-->
                 <div class="campo-cadastro">
                     <label for="cadastro-nome">Nome</label>
-                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" placeholder="Seu nome completo" required>
+                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" maxlength="120" placeholder="Seu nome completo" required>
                 </div>
+                <!--Área de email do cadastro-->
                 <div class="campo-cadastro">
                     <label for="cadastro-email">E-mail</label>
-                    <input type="email" id="cadastro-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                    <input type="email" id="cadastro-email" name="email" autocomplete="email" maxlength="254" placeholder="voce@exemplo.com" required>
                 </div>
+                <!--Área de escolha de faculdade do cadastro-->
                 <div class="campo-cadastro">
                     <label for="cadastro-faculdade">Faculdade desejada</label>
-                    <input type="text" id="cadastro-faculdade" name="faculdade" placeholder="Digite o nome da faculdade" required>
+                    <select id="cadastro-faculdade" name="faculdade" autocomplete="organization" required>
+
+                        <!--As opções de faculdades disponíveis-->
+                        <option value="" selected disabled>Selecione uma faculdade</option>
+                        <option value="Unicamp">Unicamp</option>
+                        <option value="UNESP">UNESP</option>
+                        <option value="USP">USP</option>
+                        <option value="UFRJ">UFRJ</option>
+                        <option value="UFMG">UFMG</option>
+                        <option value="ITA">ITA</option>
+                        <option value="UFRGS">UFRGS</option>
+                        <option value="UFSC">UFSC</option>
+                        <option value="UFPR">UFPR</option>
+                        <option value="UnB">UnB</option>
+                        <option value="UFPE">UFPE</option>
+                        <option value="UFC">UFC</option>
+                    </select>
                 </div>
+
+                <!--Área de escolha de cursos de acordo com a faculdade do cadastro-->
+                <div class="campo-cadastro">
+                    <label for="cadastro-curso">Curso desejado</label>
+                    <select id="cadastro-curso" name="curso" required disabled>
+                        <option value="" selected disabled>Selecione uma faculdade primeiro</option>
+                    </select>
+                </div>
+
+                <!--Área de cadastro de senha-->
                 <div class="campo-cadastro">
                     <label for="cadastro-senha">Senha</label>
-                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" placeholder="Mínimo de 8 caracteres" required>
+                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" maxlength="72" placeholder="8 a 72 caracteres" required>
                 </div>
+
+                <!--Botão de enviar os dados para o banco de dados(de forma resumida é isso)-->
                 <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
                 <p class="cadastro-aviso" role="status" aria-live="polite"></p>
             </form>
         </div>
     </dialog>
-    
+
+    <!--Modal do login-->
+    <dialog class="modal-login" aria-labelledby="titulo-login">
+        <div class="modal-cadastro-conteudo">
+            <button class="modal-cadastro-fechar modal-login-fechar" type="button" aria-label="Fechar login">&times;</button>
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h2 id="titulo-login">Entrar</h2>
+            <p class="modal-cadastro-descricao">Acesse sua conta para consultar seus dados cadastrados.</p>
+
+            <!--Área dos campos-->            
+            <form class="formulario-login" method="post">
+                <!--Área de digitar o e-mail cadastrado-->
+                <div class="campo-cadastro">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" name="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+                </div>
+                <!--Área de digitar a senha cadastrada-->
+                <div class="campo-cadastro">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" name="senha" autocomplete="current-password" placeholder="Digite sua senha" required>
+                </div>
+
+                <!--Botão de enviar os dados para o banco de dados(de forma resumida é isso)-->
+                <button class="btn-enviar-cadastro" type="submit">Entrar</button>
+                <p class="login-aviso" role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="nota-autenticacao">Entre com o e-mail e a senha usados no cadastro.</p>
+        </div>
+    </dialog>
+    <!--Relaciona o HTML com o arquivo "script.js"-->
     <script src="script.js"></script>
 </body>
 </html>

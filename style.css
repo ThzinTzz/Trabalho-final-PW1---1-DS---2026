@@ -9,6 +9,7 @@
     --cor-input-fundo: rgb(36, 40, 44);
     --cor-input-texto: #ffffff;
     --cor-borda-input: #656b72;
+    --cor-fundo-botao: rgb(36, 40, 44);
 }
 
 html[data-tema="claro"] {
@@ -22,6 +23,7 @@ html[data-tema="claro"] {
     --cor-input-fundo: #ffffff;
     --cor-input-texto: #27232d;
     --cor-borda-input: #b9afc5;
+    --cor-fundo-botao: #3b254c;
 }
 
 /* Todos os elementos*/
@@ -42,19 +44,19 @@ body{
 .inicio-informacoes{
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(-45deg, #7622c4b0, #690bbba9, #320758e4, #0000);
-    background-size: 400% 400%;
-    animation: moverGradiente 15s ease infinite;
+    background:
+        radial-gradient(ellipse at 18% 22%, rgba(196, 132, 255, 0.42), transparent 42%),
+        radial-gradient(ellipse at 82% 78%, rgba(111, 42, 196, 0.5), transparent 44%),
+        linear-gradient(125deg, #160b26 0%, #4b1b70 38%, #26113d 72%, #100a1c 100%);
+    background-size: 170% 170%, 170% 170%, 240% 240%;
+    animation: moverGradiente 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 @keyframes moverGradiente{
-    0% {
-        background-position: 0% 50%;
+    0%, 100% {
+        background-position: 0% 50%, 100% 50%, 0% 50%;
     }
     50% {
-        background-position: 100% 50%;
-    }
-    100%{
-        background-position: 0% 50%;
+        background-position: 100% 50%, 0% 50%, 100% 50%;
     }
 }
 /*-------------------------------------------------------INICIO E FIM-------------------------------------------------------*/
@@ -73,12 +75,16 @@ body{
     width: 100%;
     min-height: 100vh;
     
-    background-color: #8a2be2;
+    background-color: #160b26;
 }
-.inicio-index h1, h2,
-.inicio-cursos h1, h2,
-.inicio-contato h1, h2,
-.inicio-informacoes h1, h2{
+.inicio-index h1,
+.inicio-index h2,
+.inicio-cursos h1,
+.inicio-cursos h2,
+.inicio-contato h1,
+.inicio-contato h2,
+.inicio-informacoes h1,
+.inicio-informacoes h2{
     color: white
 }
 
@@ -97,7 +103,7 @@ body{
 
 /*-------------------------------------------------------BOTÕES-------------------------------------------------------*/
 button{
-    color: var(--cor-input-texto);
+    color: #ffffff;
 }
 .btns-inicio{
     display: flex;
@@ -124,17 +130,32 @@ button{
 
 .btns-fim{
     display: flex;
-    gap: 500px; 
+    width: 100%;
+    justify-content: center;
+    gap: 16px;
 }
 
+.btns-inicio a,
 .btns-inicio button,
 .btns-rolagem button,
+.btns-fim a,
 .btns-fim button,
 .btn-para-login,
-.link-contato-fixo button{
+.btn-para-entrar,
+.link-contato-fixo{
     width: 170px;
     height: 50px;
     border-radius: 10px;
+}
+
+.btns-inicio a,
+.btns-fim a,
+.link-contato-fixo{
+    display: inline-flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .btn-para-lista-faculdades,
@@ -143,17 +164,24 @@ button{
 .btn-para-inicio,
 .btn-para-cursos,
 .btn-para-informacoes{
-    color: var(--cor-input-texto);
-    background-color: var(--cor-input-fundo);
+    color: #ffffff;
+    background-color: var(--cor-fundo-botao);
 }
 
 .btn-conheca-cursos,
 .btn-voltar-index{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
     background-color: #8a2be2;
+    text-align: center;
+    text-decoration: none;
 }
 .btn-para-login,
 .btn-para-contato{
     background-color: transparent;
+    color: var(--cor-input-texto);
 }
 
 .btn-para-login{
@@ -168,16 +196,35 @@ button{
     left: 15px;
     z-index: 10;
 }
-.btn-para-lista-faculdades:hover:hover,
+.btn-para-entrar {
+    position: fixed;
+    top: 75px;
+    right: 15px;
+    z-index: 10;
+    color: #ffffff;
+    background-color: var(--cor-fundo-botao);
+}
+.btn-para-entrar:hover {
+    background-color: #7622c4;
+}
+.btn-para-lista-faculdades:hover,
 .btn-para-lista-cursos:hover,
-.btn-para-lista-contato:hover,:hover
+.btn-para-lista-contato:hover,
 .btn-para-inicio:hover,
 .btn-para-cursos:hover,
 .btn-para-informacoes:hover,
 .btn-para-login:hover,
-.btn-para-contato:hover{
+.btn-para-contato:hover,
+.btn-conheca-cursos:hover,
+.btn-voltar-index:hover{
     transform: translateY(-10px);
     transition: 1.5s;
+}
+.btns-inicio a:focus-visible,
+.btns-fim a:focus-visible,
+.link-contato-fixo:focus-visible{
+    outline: 2px solid #b979f1;
+    outline-offset: 3px;
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
 
@@ -294,8 +341,8 @@ button{
 }
 .btn-cancelar-curso,
 .btn-remover-curso {
-    color: var(--cor-texto);
-    background-color: var(--cor-input-fundo);
+    color: #ffffff;
+    background-color: var(--cor-fundo-botao);
 }
 .lista-cursos-salvos {
     width: min(900px, calc(100% - 40px));
@@ -349,7 +396,8 @@ button{
     display: flex;
     flex-direction: column;
     height: auto;
-    width: 500px;
+    width: min(500px, calc(100% - 32px));
+    box-sizing: border-box;
     /* Margem superior 30%, esquerda e direita automática(para centralizar) e inferior 30%*/
     margin: 10% auto 10%;
 
@@ -357,35 +405,44 @@ button{
 .contato:hover{
     transition: 1.5s;
 }
-.contato ul, li{
-    margin-bottom: 30px;
-    align-items: center;
-    gap: 20px;
+.contato ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
     flex-direction: column;
+    gap: 20px;
+    list-style: none;
+}
+.contato li{
+    margin: 0;
 }
 .contato-apps{
     display: flex;
     height: auto;
-    width: auto;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
     cursor: pointer;
     flex-direction: row;
     color: white;
     color: var(--cor-texto);
+    border-radius: 25px;
 
 }
 label{
     display: inline-block;
-    font: 50px;
-    margin-left: 25px;
-    width: 75px;
+    margin: 0;
+    font-size: 16px;
 }
 input{
-    width: 700px;
+    box-sizing: border-box;
+    width: min(700px, 100%);
     height: 50px;
     gap: 20px;
     color: var(--cor-input-texto);
     background-color: var(--cor-input-fundo);
     border: 1px solid var(--cor-borda-input);
+    border-radius: 25px;
 }
 input:focus{
     transition: 1s;
@@ -399,12 +456,16 @@ a{
     text-decoration: none;
 }
 .descricao{
-    width: 700px;
-    height: 200px;
-    gap: 20px;
+    box-sizing: border-box;
+    width: min(700px, 100%);
+    min-height: 200px;
+    padding: 16px;
     color: var(--cor-input-texto);
     background-color: var(--cor-input-fundo);
     border: 1px solid var(--cor-borda-input);
+    border-radius: 25px;
+    font: inherit;
+    resize: vertical;
 }
 .enviar-suporte{
     background-color: #8a2be2;
@@ -418,19 +479,51 @@ a{
 .img-icons{
     width: 100px;
     height: 100px;
+    flex: 0 0 100px;
 
 }
 .p-icons{
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 250px;
+    flex: 1;
+    margin: 0;
     font-size: large;
 }
 .suporte{
     display: flex;
+    width: min(700px, calc(100% - 32px));
+    margin: 0 auto;
+    align-items: stretch;
     gap: 20px;
     flex-direction: column;
+}
+.campo-grupo{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+}
+.suporte label{
+    width: auto;
+}
+.suporte input,
+.suporte textarea{
+    max-width: 100%;
+}
+.suporte input:focus,
+.suporte textarea:focus{
+    transform: none;
+    background-color: var(--cor-input-fundo);
+    outline: 2px solid #8a2be2;
+    outline-offset: 1px;
+}
+.suporte input:focus::placeholder,
+.suporte textarea:focus::placeholder{
+    color: var(--cor-input-texto);
+}
+.suporte-aviso:not(:empty){
+    margin: 0;
+    color: #b979f1;
 }
 .h1-suportecontato{
     text-align: center;
@@ -445,8 +538,8 @@ a{
     padding: 12px 16px;
     border: 1px solid var(--cor-borda);
     border-radius: 12px;
-    background-color: var(--cor-superficie);
-    color: var(--cor-texto);
+    background-color: var(--cor-fundo-botao);
+    color: #ffffff;
     box-shadow: 0 4px 16px var(--cor-sombra);
     cursor: pointer;
     transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
@@ -455,7 +548,8 @@ a{
     transform: translateY(-3px);
 }
 
-.modal-cadastro {
+.modal-cadastro,
+.modal-login {
     width: min(440px, calc(100% - 40px));
     max-height: calc(100% - 40px);
     padding: 0;
@@ -466,7 +560,8 @@ a{
     border-radius: 20px;
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
 }
-.modal-cadastro::backdrop {
+.modal-cadastro::backdrop,
+.modal-login::backdrop {
     background: rgba(13, 9, 20, 0.62);
     backdrop-filter: blur(7px);
 }
@@ -510,7 +605,7 @@ a{
     width: 36px;
     height: 36px;
     padding: 0;
-    color: var(--cor-texto);
+    color: #ffffff;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid var(--cor-borda);
     border-radius: 50%;
@@ -559,6 +654,13 @@ a{
     outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) {
+    .inicio-index,
+    .inicio-cursos,
+    .inicio-contato,
+    .inicio-informacoes {
+        animation: none;
+        background-position: 50% 50%, 50% 50%, 50% 50%;
+    }
     .modal-boas-vindas[open] {
         animation: none;
     }
@@ -589,7 +691,8 @@ a{
     margin: 0 0 8px;
     color: #b979f1;
 }
-.modal-cadastro h2 {
+.modal-cadastro h2,
+.modal-login h2 {
     margin: 0;
     font-size: 28px;
 }
@@ -613,7 +716,8 @@ a{
     margin: 0;
     font-size: 14px;
 }
-.campo-cadastro input {
+.campo-cadastro input,
+.campo-cadastro select {
     box-sizing: border-box;
     width: 100%;
     height: 46px;
@@ -624,7 +728,8 @@ a{
     border-radius: 9px;
     font: inherit;
 }
-.campo-cadastro input:focus {
+.campo-cadastro input:focus,
+.campo-cadastro select:focus {
     transform: none;
     background-color: var(--cor-input-fundo);
     outline: 2px solid #8a2be2;
@@ -656,9 +761,95 @@ a{
 .cadastro-aviso:empty {
     display: none;
 }
+.tela-autenticacao {
+    display: grid;
+    min-height: 100vh;
+    box-sizing: border-box;
+    place-items: center;
+    padding: 24px;
+    background:
+        radial-gradient(ellipse at 18% 22%, rgba(196, 132, 255, 0.3), transparent 42%),
+        radial-gradient(ellipse at 82% 78%, rgba(111, 42, 196, 0.35), transparent 44%);
+}
+.cartao-autenticacao {
+    width: min(440px, 100%);
+    box-sizing: border-box;
+    padding: 36px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 20px;
+    background-color: var(--cor-superficie);
+    box-shadow: 0 20px 70px var(--cor-sombra);
+}
+.cartao-autenticacao h1 {
+    margin: 0;
+    font-size: 28px;
+}
+.descricao-autenticacao {
+    margin: 8px 0 24px;
+    opacity: 0.75;
+}
+.formulario-login {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.login-aviso,
+.nota-autenticacao {
+    color: var(--cor-texto);
+    font-size: 14px;
+    line-height: 1.5;
+}
+.login-aviso {
+    margin: 0;
+    color: #b979f1;
+}
+.login-aviso:empty {
+    display: none;
+}
+.nota-autenticacao {
+    margin: 20px 0;
+    opacity: 0.8;
+}
+.link-voltar-autenticacao {
+    color: #b979f1;
+}
+.dados-perfil {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+}
+.dados-perfil div {
+    padding: 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 9px;
+}
+.dados-perfil dt {
+    margin-bottom: 5px;
+    font-size: 14px;
+    opacity: 0.75;
+}
+.dados-perfil dd {
+    margin: 0;
+}
+.perfil-aviso {
+    margin: 0 0 16px;
+    color: #b979f1;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.perfil-aviso:empty {
+    display: none;
+}
+.btn-sair {
+    width: 100%;
+    margin-bottom: 16px;
+}
 @media (max-width: 480px) {
     .modal-cadastro-conteudo {
         padding: 32px 24px 24px;
+    }
+    .cartao-autenticacao {
+        padding: 28px 24px;
     }
 }
 
@@ -882,9 +1073,13 @@ a{
     justify-content: center;
     margin: 48px 0 32px;
 }
+.fim-informacoes a,
 .fim-informacoes button {
+    display: inline-flex;
     width: 190px;
     height: 50px;
+    align-items: center;
+    justify-content: center;
     border-radius: 10px;
 }
 .insight-exatas {
@@ -968,5 +1163,106 @@ a{
         min-height: 230px;
         margin-top: 52px;
         padding: 24px 18px;
+    }
+}
+
+@media (max-width: 800px) {
+    .cursos {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 24px;
+    }
+    .cursos h2 {
+        margin: 48px 0 28px;
+    }
+    .div-cursos {
+        gap: 24px;
+    }
+    .div-cards-cursos {
+        box-sizing: border-box;
+        width: calc(50% - 12px);
+        min-height: 190px;
+        height: auto;
+    }
+}
+
+@media (max-width: 520px) {
+    .inicio-index,
+    .inicio-cursos,
+    .inicio-contato,
+    .inicio-informacoes {
+        box-sizing: border-box;
+        min-height: 100vh;
+        height: auto;
+        padding: 120px 16px 40px;
+        gap: 16px;
+    }
+    .inicio-index h1,
+    .inicio-cursos h1,
+    .inicio-contato h1,
+    .inicio-informacoes h1 {
+        max-width: 100%;
+        font-size: clamp(30px, 9vw, 42px);
+        text-align: center;
+    }
+    .inicio-index h2,
+    .inicio-cursos h2,
+    .inicio-contato h2,
+    .inicio-informacoes h2 {
+        max-width: 100%;
+        font-size: clamp(17px, 5vw, 22px);
+        text-align: center;
+    }
+    .btn-para-login,
+    .btn-para-entrar,
+    .link-contato-fixo {
+        width: min(140px, calc(50vw - 20px));
+        height: 44px;
+    }
+    .btn-para-login {
+        top: 12px;
+        right: 12px;
+    }
+    .btn-para-entrar {
+        top: 64px;
+        right: 12px;
+    }
+    .link-contato-fixo {
+        top: 12px;
+        left: 12px;
+    }
+    .div-cursos {
+        gap: 16px;
+    }
+    .div-cards-cursos {
+        width: 100%;
+        min-height: 170px;
+    }
+    .contato {
+        margin: 32px auto;
+    }
+    .contato-apps {
+        gap: 12px;
+    }
+    .img-icons {
+        width: 72px;
+        height: 72px;
+        flex-basis: 72px;
+    }
+    .h1-suportecontato {
+        margin: 64px 16px 24px;
+    }
+    .fim-index,
+    .fim-cursos,
+    .fim-contato {
+        margin-top: 64px;
+    }
+    .btns-fim a,
+    .btns-fim button {
+        max-width: calc(100vw - 40px);
+    }
+    .fim-informacoes a,
+    .fim-informacoes button {
+        max-width: calc(100vw - 40px);
     }
 }

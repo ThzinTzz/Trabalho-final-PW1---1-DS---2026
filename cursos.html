@@ -1,25 +1,38 @@
+<!--Informa ao navegador que o documento é um documento HTML-->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
+    <!--Define a codificação de caracteres como UTF-8(Para que o usuário possa usar acentos, "ç", "£", etc)-->
     <meta charset="UTF-8">
+
+    <!--Configura a janela de visualização do usuário para que se adapte a largura de seu dispositivo. Também define o zoom inicial como 100%(1.0)-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Título do site-->
     <title>Cursos</title>
+
+    <!--Relaciona o HTML com o arquivo "style.css"-->
     <link rel="stylesheet" href="style.css">
+
+    <!--Adiciona o favicon(imagem que fica ao lado do título do site)-->
     <link rel="shortcut icon" href="images/EXATAS-NA-HORA.ico" type="image/x-icon">
 </head>
 <body>
+    <!--Botão para alterar modo-->
     <button class="btn-tema" type="button">
         ☀️ Modo claro
     </button>
     <div class="inicio-cursos">
         <h1>Cursos</h1>
-        <h2>Conheça os melhores curso de exatas do Brasil!</h2>
+        <h2>Conheça os melhores cursos de exatas do Brasil!</h2>
 
+        <!--Botões para ir para outras abas-->
         <button type="button" class="btn-para-login">Cadastre-se</button>
-        <a class="link-contato-fixo" href="contato.html"><button type="button" class="btn-para-contato">Contate-nos</button></a>
+        <button type="button" class="btn-para-entrar">Entrar</button>
+        <a class="link-contato-fixo btn-para-contato" href="contato.html">Contate-nos</a>
         <div class="acoes-inicio">
             <div class="btns-inicio">
-                <a href="index.html"><button type="button" class="btn-para-inicio">Início</button></a>
+                <a href="index.html" class="btn-para-inicio">Início</a>
             </div>
             <div class="btns-rolagem">
                 <button type="button" onclick="rolarParaBaixo()" class="btn-para-lista-cursos">Mostre-me os Cursos</button>
@@ -27,6 +40,7 @@
         </div> 
     </div>
 
+    <!--Onde o botão de rolagem deve parar-->
     <div id="destino"></div>
 
     <section class="cursos">
@@ -97,9 +111,10 @@
 
     <div class="fim-cursos">
         <div class="btns-fim">
-            <a href="index.html"><button class="btn-voltar-index">Voltar ao início</button></a>
+            <a href="index.html" class="btn-voltar-index">Voltar ao início</a>
         </div>
     </div>
+    <!--Modal do cadastro-->
     <dialog class="modal-cadastro" aria-labelledby="titulo-cadastro">
         <div class="modal-cadastro-conteudo">
             <button class="modal-cadastro-fechar" type="button" aria-label="Fechar cadastro">&times;</button>
@@ -107,28 +122,85 @@
             <h2 id="titulo-cadastro">Crie sua conta</h2>
             <p class="modal-cadastro-descricao">Preencha seus dados para começar.</p>
 
-            <form class="formulario-cadastro">
+            <form class="formulario-cadastro" method="post">
+                <!--Área de nome do cadastro-->
                 <div class="campo-cadastro">
                     <label for="cadastro-nome">Nome</label>
-                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" placeholder="Seu nome completo" required>
+                    <input type="text" id="cadastro-nome" name="nome" autocomplete="name" maxlength="120" placeholder="Seu nome completo" required>
                 </div>
+                <!--Área de email do cadastro-->
                 <div class="campo-cadastro">
                     <label for="cadastro-email">E-mail</label>
-                    <input type="email" id="cadastro-email" name="email" autocomplete="email" placeholder="voce@exemplo.com" required>
+                    <input type="email" id="cadastro-email" name="email" autocomplete="email" maxlength="254" placeholder="voce@exemplo.com" required>
                 </div>
+                <!--Área de escolha de faculdade do cadastro-->
                 <div class="campo-cadastro">
                     <label for="cadastro-faculdade">Faculdade desejada</label>
-                    <input type="text" id="cadastro-faculdade" name="faculdade" placeholder="Digite o nome da faculdade" required>
+                    <select id="cadastro-faculdade" name="faculdade" autocomplete="organization" required>
+                        <!--As opções de faculdades disponíveis-->
+                        <option value="" selected disabled>Selecione uma faculdade</option>
+                        <option value="Unicamp">Unicamp</option>
+                        <option value="UNESP">UNESP</option>
+                        <option value="USP">USP</option>
+                        <option value="UFRJ">UFRJ</option>
+                        <option value="UFMG">UFMG</option>
+                        <option value="ITA">ITA</option>
+                        <option value="UFRGS">UFRGS</option>
+                        <option value="UFSC">UFSC</option>
+                        <option value="UFPR">UFPR</option>
+                        <option value="UnB">UnB</option>
+                        <option value="UFPE">UFPE</option>
+                        <option value="UFC">UFC</option>
+                    </select>
                 </div>
+                <!--Área de escolha de cursos de acordo com a faculdade do cadastro-->
+                <div class="campo-cadastro">
+                    <label for="cadastro-curso">Curso desejado</label>
+                    <select id="cadastro-curso" name="curso" required disabled>
+                        <option value="" selected disabled>Selecione uma faculdade primeiro</option>
+                    </select>
+                </div>
+                <!--Área de cadastro de senha-->
                 <div class="campo-cadastro">
                     <label for="cadastro-senha">Senha</label>
-                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" placeholder="Mínimo de 8 caracteres" required>
+                    <input type="password" id="cadastro-senha" name="senha" autocomplete="new-password" minlength="8" maxlength="72" placeholder="8 a 72 caracteres" required>
                 </div>
+                <!--Botão de enviar os dados para o banco de dados(de forma resumida é isso)-->
                 <button class="btn-enviar-cadastro" type="submit">Criar conta</button>
                 <p class="cadastro-aviso" role="status" aria-live="polite"></p>
             </form>
         </div>
     </dialog>
+
+    <!--Modal do login-->
+    <dialog class="modal-login" aria-labelledby="titulo-login">
+        <div class="modal-cadastro-conteudo">
+            <button class="modal-cadastro-fechar modal-login-fechar" type="button" aria-label="Fechar login">&times;</button>
+            <p class="modal-cadastro-destaque">ExatasNaHora</p>
+            <h2 id="titulo-login">Entrar</h2>
+            <p class="modal-cadastro-descricao">Acesse sua conta para consultar seus dados cadastrados.</p>
+
+            <!--Área dos campos-->
+            <form class="formulario-login" method="post">
+                <!--Área de digitar o e-mail cadastrado-->
+                <div class="campo-cadastro">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" name="email" autocomplete="username" placeholder="voce@exemplo.com" required>
+                </div>
+                <!--Área de digitar a senha cadastrada-->
+                <div class="campo-cadastro">
+                    <label for="login-senha">Senha</label>
+                    <input type="password" id="login-senha" name="senha" autocomplete="current-password" placeholder="Digite sua senha" required>
+                </div>
+                <!--Botão de enviar os dados para o banco de dados(de forma resumida é isso)-->
+                <button class="btn-enviar-cadastro" type="submit">Entrar</button>
+                <p class="login-aviso" role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="nota-autenticacao">Entre com o e-mail e a senha usados no cadastro.</p>
+        </div>
+    </dialog>
+    <!--Relaciona o HTML com o arquivo "script.js"-->
     <script src="script.js"></script>
 </body>
 </html>
