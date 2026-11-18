@@ -1,4 +1,6 @@
+/* Elemento raiz da página*/
 :root {
+    /* Declaração de variáveis globais de CSS*/
     color-scheme: dark;
     --cor-fundo: rgb(36, 40, 44);
     --cor-texto: #ffffff;
@@ -11,7 +13,7 @@
     --cor-borda-input: #656b72;
     --cor-fundo-botao: rgb(36, 40, 44);
 }
-
+/* Substitui as variáveis de cores quando o tema claro está ativo no site*/
 html[data-tema="claro"] {
     color-scheme: light;
     --cor-fundo: #f4f1f8;
@@ -28,34 +30,50 @@ html[data-tema="claro"] {
 
 /* Todos os elementos*/
 *{
-    
+    /* Ordem das fontes que irá ser usado no site*/
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    /* Deixa todos os elementos em negrito*/
     font-weight: bold;
 }
 body{
+    /* Define a margem como 0 */
     margin: 0;
+    /* Manifesta uma transição*/
     transition: background-color 0.25s ease, color 0.25s ease;
+    /* Define a cor de fundo*/
     background-color: var(--cor-fundo);
+    /* Define a cor do texto*/
     color: var(--cor-texto);
 }
 .inicio-index,
 .inicio-cursos,
 .inicio-contato,
 .inicio-informacoes{
+    
+    /* Define a largura*/
     width: 100vw;
+
+    /* Altura de 100vh*/
+    /* Define a altura*/
+    /* Define a altura*/
     height: 100vh;
+    /* Defiine o plano de fundo de um elemento*/
     background:
         radial-gradient(ellipse at 18% 22%, rgba(196, 132, 255, 0.42), transparent 42%),
         radial-gradient(ellipse at 82% 78%, rgba(111, 42, 196, 0.5), transparent 44%),
         linear-gradient(125deg, #160b26 0%, #4b1b70 38%, #26113d 72%, #100a1c 100%);
+    /* Define o tamanho do fumdo*/
     background-size: 170% 170%, 170% 170%, 240% 240%;
+    /* Define uma animação*/
     animation: moverGradiente 13s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 @keyframes moverGradiente{
     0%, 100% {
+        /* Define a posição do fundo*/
         background-position: 0% 50%, 100% 50%, 0% 50%;
     }
     50% {
+        /* Define a posição do fundo*/
         background-position: 100% 50%, 0% 50%, 100% 50%;
     }
 }
@@ -64,17 +82,24 @@ body{
 .inicio-cursos,
 .inicio-contato,
 .inicio-informacoes{
+    /* Define o display como flex*/
     display: flex;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 20px;
+    /* Ordem das fontes que irá ser usado no site*/
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 
     /* Faz com que o inicio roxo ocupe toda a tela*/
     width: 100%;
+    /* Define a altura mínima*/
     min-height: 100vh;
     
+    /* Define a cor de fundo*/
     background-color: #160b26;
 }
 .inicio-index h1,
@@ -85,16 +110,21 @@ body{
 .inicio-contato h2,
 .inicio-informacoes h1,
 .inicio-informacoes h2{
+    /* Define a cor do texto*/
     color: white
 }
 
 .fim-index,
 .fim-cursos,
 .fim-contato{
+    /* Define o display como flex*/
     display: flex;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /* Define a margin superior*/
     margin-top: 250px;
+    /* Define a margin inferior*/
     margin-bottom: 25px;
 }
 
@@ -103,35 +133,51 @@ body{
 
 /*-------------------------------------------------------BOTÕES-------------------------------------------------------*/
 button{
+    /* Define a cor do texto*/
     color: #ffffff;
 }
 .btns-inicio{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: 100%;
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
     flex-wrap: wrap;
     justify-content: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 20px;
 }
 .acoes-inicio {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: 100%;
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a direção em colunas*/
     flex-direction: column;
     align-items: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 14px;
 }
 .btns-rolagem {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: 100%;
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
     justify-content: center;
 }
 
 .btns-fim{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: 100%;
     justify-content: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 16px;
 }
 
@@ -143,18 +189,26 @@ button{
 .btn-para-login,
 .btn-para-entrar,
 .link-contato-fixo{
+    /* Define a largura*/
     width: 170px;
+    /* Define a altura*/
+    /* Define a altura*/
     height: 50px;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 10px;
 }
 
 .btns-inicio a,
 .btns-fim a,
 .link-contato-fixo{
+    /* Define o display como inline-flex*/
     display: inline-flex;
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /* Alinha o texto ao centro*/
     text-align: center;
 }
 
@@ -164,47 +218,81 @@ button{
 .btn-para-inicio,
 .btn-para-cursos,
 .btn-para-informacoes{
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: var(--cor-fundo-botao);
 }
 
 .btn-conheca-cursos,
 .btn-voltar-index{
+    /* Define o display como inline-flex*/
     display: inline-flex;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: #8a2be2;
+    /* Alinha o texto ao centro*/
     text-align: center;
+    /* Declara que não tem decoração no texto*/
     text-decoration: none;
 }
 .btn-para-login,
 .btn-para-contato{
+    /* Define a cor de fundo*/
     background-color: transparent;
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
 }
 
+.btn-para-login,
+.btn-para-entrar,
+.link-contato-fixo{
+    /* Define configurações à fonte*/
+    font: inherit;
+}
+
 .btn-para-login{
+    /* Define a posição*/
     position: fixed;
+    /* Define a distância em relação ao topo*/
     top: 15px;
+    /* Define a distância em relação à direita*/
     right: 15px;
+    /* Define a ordem de sobreposição(camadas) de um elemento*/
     z-index: 10;
 }
 .link-contato-fixo {
+    /* Define a posição*/
     position: fixed;
+    /* Define a distância em relação ao topo*/
     top: 15px;
+    /* Define a distância em relação à esquerda*/
     left: 15px;
+    /* Define a ordem de sobreposição(camadas) de um elemento*/
     z-index: 10;
+    /* Adiciona uma borda*/
+    border: 2px outset buttonborder;
 }
 .btn-para-entrar {
+    /* Define a posição*/
     position: fixed;
+    /* Define a distância em relação ao topo*/
     top: 75px;
+    /* Define a distância em relação à direita*/
     right: 15px;
+    /* Define a ordem de sobreposição(camadas) de um elemento*/
     z-index: 10;
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: var(--cor-fundo-botao);
 }
 .btn-para-entrar:hover {
+    /* Define a cor de fundo*/
     background-color: #7622c4;
 }
 .btn-para-lista-faculdades:hover,
@@ -217,13 +305,17 @@ button{
 .btn-para-contato:hover,
 .btn-conheca-cursos:hover,
 .btn-voltar-index:hover{
+    /* Define uma transformação*/
     transform: translateY(-10px);
+    /* Manifesta uma transição*/
     transition: 1.5s;
 }
 .btns-inicio a:focus-visible,
 .btns-fim a:focus-visible,
 .link-contato-fixo:focus-visible{
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #b979f1;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 3px;
 }
 /*--------------------------------------------------------------------------------------------------------------------*/
@@ -231,426 +323,668 @@ button{
 /*-------------------------------------------------------Cards-------------------------------------------------------*/
 .seçao-faculdades h2,
 .cursos h2{
+    /* Define a margin superior*/
     margin-top: 10% ;
+    /* Define a margin inferior*/
     margin-bottom: 20%;
+    /* Alinha o texto ao centro*/
     text-align: center;
+    /* Define a direção em colunas*/
     flex-direction: column;  
 }
 
 .div-faculdades,
 .div-cursos{
+    /* Define o display como flex*/
     display: flex;
-    justify-content: center;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
+    justify-content: center;
+    /* Define a direção em linhas*/
     flex-direction: row;
-    /*Espaçamento entre os cards de 200px*/
+    /*Espaçamento os entre os elementos filhos*/
     gap: 200px;
     /*Faz com que ocorra a quebra dos cards quando não cabe mais um sem ter que alterar os outros*/
     flex-wrap: wrap;
 }
 .div-cards-faculdades,
 .div-cards-cursos{
+    /* Define o display como flex*/
     display: flex;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /* Adiciona uma borda*/
+    /* Adiciona uma borda*/
     border: 2.5px solid var(--cor-borda);
+    /* Define a sombra do elemento*/
     box-shadow: 0px 8px 24px var(--cor-sombra);
+    /* Define a cor de fundo*/
     background-color: var(--cor-superficie);
+    /* Define a altura*/
     height: 250px;
+    /* Define a largura*/
     width: 20%;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 20px;
 }
 .div-cards-faculdades:hover,
 .div-cards-cursos:hover,
 .contato-apps:hover{
+   /* Define uma transformação*/
    transform: translateY(-10px);
+   /* Manifesta uma transição*/
    transition: 0.7s;
+   /* Define a sombra do elemento*/
    box-shadow: 20px 8px 24px rgb(83, 26, 136);
+   /* Define a sombra do elemento*/
    box-shadow: 20px 8px 24px var(--cor-sombra-hover);
 
 }
 
 .curso-card-abrir {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: 100%;
+    /* Define a altura*/
     height: 100%;
+    /* Define o espaçamento interno(padding)*/
     padding: 20px;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 12px;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Defiine o plano de fundo de um elemento*/
     background: transparent;
+    /* Remove qualquer borda*/
     border: 0;
+    /* Arredonda a circunferência das bordas*/
     border-radius: inherit;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Define configurações à fonte*/
     font: inherit;
 }
 .curso-card-abrir p {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Alinha o texto ao centro*/
     text-align: center;
 }
 .curso-card-abrir .curso-titulo {
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 18px;
     line-height: 1.3;
 }
 .curso-card-abrir .curso-descricao {
+    /* Define a opacidade*/
     opacity: 0.75;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     font-weight: normal;
     line-height: 1.5;
 }
 .curso-card-abrir:hover {
+    /* Define a cor do texto*/
     color: #c99af1;
 }
 .curso-card-abrir:focus-visible,
 .confirmacao-curso button:focus-visible,
 .btn-remover-curso:focus-visible {
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #b979f1;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 3px;
 }
 .confirmacao-curso {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a altura*/
     height: 100%;
+    /* Define o espaçamento interno(padding)*/
     padding: 20px;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 12px;
+    /* Alinha o texto ao centro*/
     text-align: center;
 }
 .confirmacao-curso[hidden] {
+    /* Define o display como nenhum*/
     display: none;
 }
 .confirmacao-curso p {
+    /* Define a margem*/
     margin: 0 0 8px;
 }
 .confirmacao-curso button,
 .btn-remover-curso {
+    /* Define a altura mínima*/
     min-height: 38px;
+    /* Define o espaçamento interno(padding)*/
     padding: 8px 14px;
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 9px;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Define configurações à fonte*/
     font: inherit;
 }
 .btn-adicionar-curso {
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: #7622c4;
 }
 .btn-cancelar-curso,
 .btn-remover-curso {
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: var(--cor-fundo-botao);
 }
 .lista-cursos-salvos {
+    /* Define a largura*/
     width: min(900px, calc(100% - 40px));
+    /* Define a margem*/
     margin: 100px auto 0;
+    /* Define o espaçamento interno(padding)*/
     padding: 24px;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define a cor de fundo*/
     background-color: var(--cor-superficie);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 18px;
+    /* Define a sombra do elemento*/
     box-shadow: 0 8px 24px var(--cor-sombra);
 }
 .lista-cursos-salvos h2 {
+    /* Define a margem*/
     margin: 0 0 18px;
 }
 .lista-cursos-vazia,
 .lista-cursos-aviso {
+    /* Define a margem como 0 */
     margin: 0;
 }
 .lista-cursos-itens {
+    /* Define o display como grid*/
     display: grid;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 10px;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o espaçamento interno(padding)*/
     padding: 0;
     list-style: none;
 }
 .lista-cursos-itens li {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a altura mínima*/
     min-height: 48px;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o espaçamento interno(padding)*/
     padding: 8px 12px;
     align-items: center;
+    /* Distribui os itens horizontalmente com espaçamento igual entre cada item*/
     justify-content: space-between;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 16px;
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 10px;
 }
 .lista-cursos-aviso:not(:empty) {
+    /* Define a margin superior*/
     margin-top: 12px;
+    /* Define a cor do texto*/
     color: #b979f1;
 }
+/* Para responsividade em celulares*/
 @media (max-width: 600px) {
     .lista-cursos-salvos {
+        /* Inclui o padding e a borda no valor total do tamanho do elemento*/
         box-sizing: border-box;
+        /* Define o espaçamento interno(padding)*/
         padding: 18px;
     }
 }
 
 /*--------------------------------------------------------------------------------------------------------------------*/
 .contato{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /* Define a altura*/
     height: auto;
+    /* Define a largura*/
     width: min(500px, calc(100% - 32px));
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
     /* Margem superior 30%, esquerda e direita automática(para centralizar) e inferior 30%*/
     margin: 10% auto 10%;
 
 }
 .contato:hover{
+    /* Manifesta uma transição*/
     transition: 1.5s;
 }
 .contato ul{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o espaçamento interno(padding)*/
     padding: 0;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 20px;
     list-style: none;
 }
 .contato li{
+    /* Define a margem como 0 */
     margin: 0;
 }
 .contato-apps{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a altura*/
     height: auto;
+    /* Define a largura*/
     width: 100%;
     align-items: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 16px;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Define a direção em linhas*/
     flex-direction: row;
+    /* Define a cor do texto*/
     color: white;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 25px;
-
 }
 label{
+    /* Define o display como inline-block*/
     display: inline-block;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 16px;
 }
 input{
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: min(700px, 100%);
+    /* Define a altura*/
     height: 50px;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 20px;
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda-input);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 25px;
 }
 input:focus{
+    /* Manifesta uma transição*/
     transition: 1s;
+    /* Define uma transformação*/
     transform: translateY(-10px);
+    /* Define a cor de fundo*/
     background-color: #8a2be2;
 }
 input:focus::placeholder{
+    /* Define a cor do texto*/
     color: white;
 }
 a{
+    /* Declara que não tem decoração no texto*/
     text-decoration: none;
 }
 .descricao{
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: min(700px, 100%);
+    /* Define a altura mínima*/
     min-height: 200px;
+    /* Define o espaçamento interno(padding)*/
     padding: 16px;
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda-input);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 25px;
+    /* Define configurações à fonte*/
     font: inherit;
     resize: vertical;
 }
 .enviar-suporte{
+    /* Define a cor de fundo*/
     background-color: #8a2be2;
+    /* Define a altura*/
     height: 50px;
+    /* Define a largura*/
     width: 100px;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
 }
 .enviar-suporte:hover{
+    /* Define a cor de fundo*/
     background-color: #892be2a3;
 }
 .img-icons{
+    /* Define a largura*/
     width: 100px;
+    /* Define a altura*/
     height: 100px;
     flex: 0 0 100px;
 
 }
 .p-icons{
+    /* Define o display como flex*/
     display: flex;
     align-items: center;
     flex: 1;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: large;
 }
 .suporte{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: min(700px, calc(100% - 32px));
+    /* Define a margem*/
     margin: 0 auto;
     align-items: stretch;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 20px;
+    /* Define a direção em colunas*/
     flex-direction: column;
 }
 .campo-grupo{
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: 100%;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 8px;
 }
 .suporte label{
+    /* Define a largura*/
     width: auto;
 }
 .suporte input,
 .suporte textarea{
+    /* Define a largura máxima*/
     max-width: 100%;
 }
 .suporte input:focus,
 .suporte textarea:focus{
+    /* Define uma transformação*/
     transform: none;
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #8a2be2;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 1px;
 }
 .suporte input:focus::placeholder,
 .suporte textarea:focus::placeholder{
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
 }
 .suporte-aviso:not(:empty){
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define a cor do texto*/
     color: #b979f1;
 }
 .h1-suportecontato{
+    /* Alinha o texto ao centro*/
     text-align: center;
+    /* Define a margin superior*/
     margin-top: 250px;
 }
 
 .btn-tema {
+    /* Define a posição*/
     position: fixed;
+    /* Define a distância em relação à direita*/
     right: 20px;
+    /* Define a distância em relação à base*/
     bottom: 20px;
+    /* Define a ordem de sobreposição(camadas) de um elemento*/
     z-index: 1000;
+    /* Define o espaçamento interno(padding)*/
     padding: 12px 16px;
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 12px;
+    /* Define a cor de fundo*/
     background-color: var(--cor-fundo-botao);
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a sombra do elemento*/
     box-shadow: 0 4px 16px var(--cor-sombra);
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Manifesta uma transição*/
     transition: background-color 0.25s ease, color 0.25s ease, transform 0.2s ease;
 }
 .btn-tema:hover {
+    /* Define uma transformação*/
     transform: translateY(-3px);
 }
 
 .modal-cadastro,
 .modal-login {
+    /* Define a largura*/
     width: min(440px, calc(100% - 40px));
+    /* Define a altura máxima*/
     max-height: calc(100% - 40px);
+    /* Define o espaçamento interno(padding)*/
     padding: 0;
     overflow-y: auto;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define a cor de fundo*/
     background-color: var(--cor-superficie);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 20px;
+    /* Define a sombra do elemento*/
     box-shadow: 0 20px 70px rgba(0, 0, 0, 0.45);
 }
 .modal-cadastro::backdrop,
 .modal-login::backdrop {
+    /* Defiine o plano de fundo de um elemento*/
     background: rgba(13, 9, 20, 0.62);
+    /* Aplica efeitos visuais na área atrás do elemento semitransparente*/
     backdrop-filter: blur(7px);
 }
 .modal-boas-vindas {
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: min(520px, calc(100% - 32px));
+    /* Define o espaçamento interno(padding)*/
     padding: 0;
+    /* Controla o que acontece com um elemento quando o conteúdo interno dele é maior do que a
+    largura ou altura definida para a caixa dele*/
     overflow: hidden;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Defiine o plano de fundo de um elemento*/
     background: linear-gradient(145deg, var(--cor-superficie), rgba(91, 28, 145, 0.96));
+    /* Adiciona uma borda*/
     border: 1px solid rgba(201, 154, 241, 0.55);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 24px;
+    /* Define a sombra do elemento*/
     box-shadow: 0 24px 80px rgba(89, 29, 143, 0.48), 0 0 30px rgba(185, 121, 241, 0.25);
 }
 .modal-boas-vindas::backdrop {
+    /* Defiine o plano de fundo de um elemento*/
     background: rgba(15, 7, 24, 0.72);
+    /* Aplica efeitos visuais na área atrás do elemento semitransparente*/
     backdrop-filter: blur(8px);
 }
 .modal-boas-vindas[open] {
+    /* Define uma animação*/
     animation: entradaBoasVindas 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 @keyframes entradaBoasVindas {
     from {
+        /* Define a opacidade*/
         opacity: 0;
+        /* Define uma transformação*/
         transform: translateY(18px) scale(0.96);
     }
     to {
+        /* Define a opacidade*/
         opacity: 1;
+        /* Define uma transformação*/
         transform: translateY(0) scale(1);
     }
 }
 .modal-boas-vindas-conteudo {
+    /* Define a posição*/
     position: relative;
+    /* Define o espaçamento interno(padding)*/
     padding: 48px 38px 36px;
+    /* Alinha o texto ao centro*/
     text-align: center;
 }
 .modal-boas-vindas-fechar {
+    /* Define a posição*/
     position: absolute;
+    /* Define a distância em relação ao topo*/
     top: 14px;
+    /* Define a distância em relação à direita*/
     right: 14px;
+    /* Define a largura*/
     width: 36px;
+    /* Define a altura*/
     height: 36px;
+    /* Define o espaçamento interno(padding)*/
     padding: 0;
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Defiine o plano de fundo de um elemento*/
     background: rgba(255, 255, 255, 0.08);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 50%;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 24px;
     line-height: 1;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
 }
 .modal-boas-vindas-destaque {
+    /* Define a margem*/
     margin: 0 0 10px;
+    /* Define a cor do texto*/
     color: #d3a9ff;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 .modal-boas-vindas h2 {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: clamp(30px, 7vw, 40px);
 }
 .modal-boas-vindas-conteudo > p:not(.modal-boas-vindas-destaque) {
+    /* Define a margem*/
     margin: 16px 0 20px;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 16px;
     font-weight: normal;
     line-height: 1.65;
+    /* Define a opacidade*/
     opacity: 0.9;
 }
 .btn-entendi-boas-vindas {
+    /* Define a largura mínima*/
     min-width: 175px;
+    /* Define a altura mínima*/
     min-height: 48px;
+    /* Define o espaçamento interno(padding)*/
     padding: 10px 20px;
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Defiine o plano de fundo de um elemento*/
     background: linear-gradient(110deg, #9b42e8, #6e22b7);
+    /* Adiciona uma borda*/
     border: 1px solid rgba(255, 255, 255, 0.18);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 12px;
+    /* Define a sombra do elemento*/
     box-shadow: 0 8px 24px rgba(47, 11, 77, 0.35);
+    /* Define configurações à fonte*/
     font: inherit;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Manifesta uma transição*/
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .btn-entendi-boas-vindas:hover {
+    /* Define uma transformação*/
     transform: translateY(-2px);
+    /* Define a sombra do elemento*/
     box-shadow: 0 12px 28px rgba(47, 11, 77, 0.5);
 }
 .modal-boas-vindas-fechar:focus-visible,
 .btn-entendi-boas-vindas:focus-visible {
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #e0c3ff;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -658,611 +992,921 @@ a{
     .inicio-cursos,
     .inicio-contato,
     .inicio-informacoes {
+        /* Define uma animação*/
         animation: none;
+        /* Define a posição do fundo*/
         background-position: 50% 50%, 50% 50%, 50% 50%;
     }
     .modal-boas-vindas[open] {
+        /* Define uma animação*/
         animation: none;
     }
     .btn-entendi-boas-vindas {
+        /* Manifesta uma transição*/
         transition: none;
     }
 }
 .modal-cadastro-conteudo {
+    /* Define a posição*/
     position: relative;
+    /* Define o espaçamento interno(padding)*/
     padding: 36px;
 }
 .modal-cadastro-fechar {
+    /* Define a posição*/
     position: absolute;
+    /* Define a distância em relação ao topo*/
     top: 14px;
+    /* Define a distância em relação à direita*/
     right: 16px;
+    /* Define a largura*/
     width: 36px;
+    /* Define a altura*/
     height: 36px;
+    /* Define o espaçamento interno(padding)*/
     padding: 0;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Defiine o plano de fundo de um elemento*/
     background: transparent;
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 50%;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 25px;
     line-height: 1;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
 }
 .modal-cadastro-destaque {
+    /* Define a margem*/
     margin: 0 0 8px;
+    /* Define a cor do texto*/
     color: #b979f1;
 }
 .modal-cadastro h2,
 .modal-login h2 {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 28px;
 }
 .modal-cadastro-descricao {
+    /* Define a margem*/
     margin: 8px 0 24px;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define a opacidade*/
     opacity: 0.75;
 }
 .formulario-cadastro {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 16px;
 }
 .campo-cadastro {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 7px;
 }
 .campo-cadastro label {
+    /* Define a largura*/
     width: auto;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
 }
 .campo-cadastro input,
 .campo-cadastro select {
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: 100%;
+    /* Define a altura*/
     height: 46px;
+    /* Define o espaçamento interno(padding)*/
     padding: 0 12px;
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda-input);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 9px;
+    /* Define configurações à fonte*/
     font: inherit;
 }
 .campo-cadastro input:focus,
 .campo-cadastro select:focus {
+    /* Define uma transformação*/
     transform: none;
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #8a2be2;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 1px;
 }
 .campo-cadastro input:focus::placeholder {
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
 }
 .btn-enviar-cadastro {
+    /* Define a altura mínima*/
     min-height: 48px;
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: #7622c4;
+    /* Remove qualquer borda*/
     border: 0;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 10px;
+    /* Define configurações à fonte*/
     font: inherit;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Manifesta uma transição*/
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .btn-enviar-cadastro:hover {
+    /* Define a cor de fundo*/
     background-color: #5f159f;
+    /* Define uma transformação*/
     transform: translateY(-2px);
 }
 .cadastro-aviso {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define a cor do texto*/
     color: #b979f1;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     line-height: 1.5;
 }
 .cadastro-aviso:empty {
+    /* Define o display como nenhum*/
     display: none;
 }
 .tela-autenticacao {
+    /* Define o display como grid*/
     display: grid;
+    /* Define a altura mínima*/
     min-height: 100vh;
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
     place-items: center;
+    /* Define o espaçamento interno(padding)*/
     padding: 24px;
+    /* Defiine o plano de fundo de um elemento*/
     background:
         radial-gradient(ellipse at 18% 22%, rgba(196, 132, 255, 0.3), transparent 42%),
         radial-gradient(ellipse at 82% 78%, rgba(111, 42, 196, 0.35), transparent 44%);
 }
 .cartao-autenticacao {
+    /* Define a largura*/
     width: min(440px, 100%);
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define o espaçamento interno(padding)*/
     padding: 36px;
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 20px;
+    /* Define a cor de fundo*/
     background-color: var(--cor-superficie);
+    /* Define a sombra do elemento*/
     box-shadow: 0 20px 70px var(--cor-sombra);
 }
 .cartao-autenticacao h1 {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 28px;
 }
 .descricao-autenticacao {
+    /* Define a margem*/
     margin: 8px 0 24px;
+    /* Define a opacidade*/
     opacity: 0.75;
 }
 .formulario-login {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 16px;
 }
 .login-aviso,
 .nota-autenticacao {
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     line-height: 1.5;
 }
 .login-aviso {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define a cor do texto*/
     color: #b979f1;
 }
 .login-aviso:empty {
+    /* Define o display como nenhum*/
     display: none;
 }
 .nota-autenticacao {
+    /* Define a margem*/
     margin: 20px 0;
+    /* Define a opacidade*/
     opacity: 0.8;
 }
 .link-voltar-autenticacao {
+    /* Define a cor do texto*/
     color: #b979f1;
 }
 .dados-perfil {
+    /* Define o display como grid*/
     display: grid;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 12px;
+    /* Define a margem*/
     margin: 24px 0;
 }
 .dados-perfil div {
+    /* Define o espaçamento interno(padding)*/
     padding: 12px;
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 9px;
 }
 .dados-perfil dt {
+    /* Define a margin inferior*/
     margin-bottom: 5px;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
+    /* Define a opacidade*/
     opacity: 0.75;
 }
 .dados-perfil dd {
+    /* Define a margem como 0 */
     margin: 0;
 }
 .perfil-aviso {
+    /* Define a margem*/
     margin: 0 0 16px;
+    /* Define a cor do texto*/
     color: #b979f1;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     line-height: 1.5;
 }
 .perfil-aviso:empty {
+    /* Define o display como nenhum*/
     display: none;
 }
 .btn-sair {
+    /* Define a largura*/
     width: 100%;
+    /* Define a margin inferior*/
     margin-bottom: 16px;
 }
+/* Para responsividade em celulares*/
 @media (max-width: 480px) {
     .modal-cadastro-conteudo {
+        /* Define o espaçamento interno(padding)*/
         padding: 32px 24px 24px;
     }
     .cartao-autenticacao {
+        /* Define o espaçamento interno(padding)*/
         padding: 28px 24px;
     }
 }
 
 .seçao-faculdades {
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: 100%;
+    /* Define o espaçamento interno(padding)*/
     padding: 72px 7vw 24px;
 }
 .seçao-faculdades h2 {
+    /* Define a margem*/
     margin: 0 0 36px;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: clamp(24px, 3vw, 36px);
 }
 .div-faculdades {
+    /* Define o display como grid*/
     display: grid;
+    /* Define a largura*/
     width: min(1120px, 100%);
+    /* Define a margem*/
     margin: 0 auto;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    /*Espaçamento os entre os elementos filhos*/
     gap: 22px;
 }
 .div-cards-faculdades {
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: 100%;
+    /* Define a altura mínima*/
     min-height: 190px;
+    /* Define a altura*/
     height: auto;
+    /* Define o espaçamento interno(padding)*/
     padding: 26px 24px;
     align-items: flex-start;
     justify-content: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 12px;
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
     border-top: 3px solid #9a4be0;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 16px;
+    /* Defiine o plano de fundo de um elemento*/
     background: linear-gradient(145deg, var(--cor-superficie), rgba(138, 43, 226, 0.08));
+    /* Define a sombra do elemento*/
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    /* Manifesta uma transição*/
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .div-cards-faculdades p {
+    /* Define a margem como 0 */
     margin: 0;
 }
 .div-cards-faculdades p:first-child {
+    /* Define a cor do texto*/
     color: #b979f1;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 21px;
     line-height: 1.25;
 }
 .div-cards-faculdades p:last-child {
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     font-weight: normal;
     line-height: 1.65;
+    /* Define a opacidade*/
     opacity: 0.8;
 }
 .div-cards-faculdades:hover {
+    /* Define uma transformação*/
     transform: translateY(-5px);
+    /* Define a cor da borda*/
     border-color: rgba(185, 121, 241, 0.55);
+    /* Define a sombra do elemento*/
     box-shadow: 0 14px 30px var(--cor-sombra-hover);
 }
 .div-cards-faculdades[hidden],
 .div-cards-cursos[hidden],
 .faculdade-info[hidden] {
+    /* Define o display como nenhum*/
     display: none;
 }
 .filtro-lista {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura*/
     width: min(560px, 100%);
+    /* Define a margem*/
     margin: 0 auto 28px;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 8px;
 }
 .filtro-lista label {
+    /* Define a largura*/
     width: auto;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 15px;
 }
 .filtro-lista input {
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: 100%;
+    /* Define a altura*/
     height: 48px;
+    /* Define o espaçamento interno(padding)*/
     padding: 0 14px;
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda-input);
+    /* Arredonda a circunferência das bordas*/
     border-radius: 10px;
+    /* Define configurações à fonte*/
     font: inherit;
 }
 .filtro-lista input:focus {
+    /* Define uma transformação*/
     transform: none;
+    /* Define a cor de fundo*/
     background-color: var(--cor-input-fundo);
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #8a2be2;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 1px;
 }
 .filtro-lista input:focus::placeholder {
+    /* Define a cor do texto*/
     color: var(--cor-input-texto);
 }
 .filtro-resultado {
+    /* Define a altura mínima*/
     min-height: 20px;
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define a cor do texto*/
     color: #b979f1;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     font-weight: normal;
 }
+/* Para responsividade em celulares*/
 @media (max-width: 800px) {
     .div-faculdades {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
+/* Para responsividade em celulares*/
 @media (max-width: 520px) {
     .seçao-faculdades {
+        /* Define o espaçamento interno(padding)*/
         padding: 52px 20px 16px;
     }
     .seçao-faculdades h2 {
+        /* Define a margin inferior*/
         margin-bottom: 26px;
     }
     .div-faculdades {
         grid-template-columns: 1fr;
+        /*Espaçamento os entre os elementos filhos*/
         gap: 16px;
     }
     .div-cards-faculdades {
+        /* Define a altura mínima*/
         min-height: 155px;
     }
 }
 
 .informacoes-faculdades {
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a largura*/
     width: min(1120px, calc(100% - 40px));
+    /* Define a margem*/
     margin: 0 auto;
+    /* Define o espaçamento interno(padding)*/
     padding: 72px 0 24px;
 }
 .informacoes-faculdades > h2 {
+    /* Define a margem*/
     margin: 0 0 16px;
+    /* Alinha o texto ao centro*/
     text-align: center;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: clamp(24px, 3vw, 36px);
 }
 .informacoes-introducao {
+    /* Define a largura máxima*/
     max-width: 780px;
+    /* Define a margem*/
     margin: 0 auto 32px;
+    /* Alinha o texto ao centro*/
     text-align: center;
     font-weight: normal;
     line-height: 1.65;
+    /* Define a opacidade*/
     opacity: 0.8;
 }
 .lista-faculdades-info {
+    /* Define o display como grid*/
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    /*Espaçamento os entre os elementos filhos*/
     gap: 18px;
 }
 .faculdade-info {
     align-self: start;
+    /* Controla o que acontece com um elemento quando o conteúdo interno dele é maior do que a
+    largura ou altura definida para a caixa dele*/
     overflow: hidden;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Defiine o plano de fundo de um elemento*/
     background: linear-gradient(145deg, var(--cor-superficie), rgba(138, 43, 226, 0.08));
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
     border-top: 3px solid #9a4be0;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 16px;
+    /* Define a sombra do elemento*/
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    /* Manifesta uma transição*/
     transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .faculdade-info[open] {
+    /* Define a cor da borda*/
     border-color: rgba(185, 121, 241, 0.55);
+    /* Define a sombra do elemento*/
     box-shadow: 0 12px 28px var(--cor-sombra-hover);
 }
 .faculdade-info summary {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a altura mínima*/
     min-height: 72px;
+    /* Define o espaçamento interno(padding)*/
     padding: 18px 22px;
+    /* Centraliza os itens verticalmente*/
     align-items: center;
+    /* Distribui os itens horizontalmente com espaçamento igual entre cada item*/
     justify-content: space-between;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 14px;
+    /* Define a cor do texto*/
     color: #b979f1;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
     list-style: none;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 19px;
 }
 .faculdade-info summary::-webkit-details-marker {
+    /* Define o display como nenhum*/
     display: none;
 }
 .faculdade-info summary::after {
     content: "+";
     flex: 0 0 auto;
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 24px;
 }
 .faculdade-info[open] summary::after {
     content: "−";
 }
 .faculdade-local {
+    /* Define a cor do texto*/
     color: var(--cor-texto);
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 13px;
     font-weight: normal;
     text-align: right;
+    /* Define a opacidade*/
     opacity: 0.65;
 }
 .faculdade-info summary:focus-visible,
 .faculdade-info-conteudo a:focus-visible {
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #b979f1;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: -3px;
 }
 .faculdade-info-conteudo {
+    /* Define o espaçamento interno(padding)*/
     padding: 0 22px 22px;
     border-top: 1px solid var(--cor-borda);
 }
 .faculdade-info-conteudo ul {
+    /* Define o display como grid*/
     display: grid;
+    /* Define a margem*/
     margin: 16px 0;
     padding-left: 20px;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    /*Espaçamento os entre os elementos filhos*/
     gap: 9px 18px;
 }
 .faculdade-info-conteudo li {
+    /* Define a margem como 0 */
     margin: 0;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     font-weight: normal;
     line-height: 1.45;
 }
 .faculdade-info-conteudo a {
+    /* Define a cor do texto*/
     color: #c99af1;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     line-height: 1.5;
 }
 .fim-informacoes {
+    /* Define o display como flex*/
     display: flex;
     justify-content: center;
+    /* Define a margem*/
     margin: 48px 0 32px;
 }
 .fim-informacoes a,
 .fim-informacoes button {
+    /* Define o display como inline-flex*/
     display: inline-flex;
+    /* Define a largura*/
     width: 190px;
+    /* Define a altura*/
     height: 50px;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 10px;
 }
 .insight-exatas {
+    /* Define o display como flex*/
     display: flex;
+    /* Define a largura máxima*/
     max-width: 760px;
+    /* Define a altura mínima*/
     min-height: 250px;
+    /* Define a margem*/
     margin: 72px auto 16px;
+    /* Define o espaçamento interno(padding)*/
     padding: 32px;
+    /* Inclui o padding e a borda no valor total do tamanho do elemento*/
     box-sizing: border-box;
+    /* Define a direção em colunas*/
     flex-direction: column;
+    /* Alinha os itens ao centro na horizontal e vertical*/
     align-items: center;
     justify-content: center;
+    /*Espaçamento os entre os elementos filhos*/
     gap: 14px;
+    /* Alinha o texto ao centro*/
     text-align: center;
+    /* Defiine o plano de fundo de um elemento*/
     background: linear-gradient(145deg, var(--cor-superficie), rgba(138, 43, 226, 0.12));
+    /* Adiciona uma borda*/
     border: 1px solid var(--cor-borda);
     border-top: 3px solid #9a4be0;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 18px;
+    /* Define a sombra do elemento*/
     box-shadow: 0 8px 24px var(--cor-sombra);
 }
 .insight-exatas .insight-etiqueta,
 .insight-exatas h2,
 .insight-exatas .insight-mensagem {
+    /* Define a margem como 0 */
     margin: 0;
 }
 .insight-etiqueta {
+    /* Define a cor do texto*/
     color: #b979f1;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
 .insight-exatas h2 {
+    /* Define o tamanho da fonte com esse valor*/
     font-size: clamp(22px, 3vw, 30px);
 }
 .insight-mensagem {
+    /* Define a altura mínima*/
     min-height: 52px;
+    /* Define a largura máxima*/
     max-width: 620px;
+    /* Define o tamanho da fonte com esse valor*/
     font-size: 17px;
     font-weight: normal;
     line-height: 1.6;
 }
 .btn-proximo-insight {
+    /* Define a altura mínima*/
     min-height: 46px;
+    /* Define o espaçamento interno(padding)*/
     padding: 10px 20px;
+    /* Define a cor do texto*/
     color: #ffffff;
+    /* Define a cor de fundo*/
     background-color: #7622c4;
+    /* Remove qualquer borda*/
     border: 0;
+    /* Arredonda a circunferência das bordas*/
     border-radius: 10px;
+    /* Define configurações à fonte*/
     font: inherit;
+    /* Define o cursor da seguinte forma*/
     cursor: pointer;
+    /* Manifesta uma transição*/
     transition: background-color 0.2s ease, transform 0.2s ease;
 }
 .btn-proximo-insight:hover {
+    /* Define a cor de fundo*/
     background-color: #5f159f;
+    /* Define uma transformação*/
     transform: translateY(-2px);
 }
 .btn-proximo-insight:focus-visible {
+    /* Define um contorno externamente dando destaque ao redor do elemento*/
     outline: 2px solid #b979f1;
+    /* Define a distância entre a borda do elemento e o contorno externo*/
     outline-offset: 3px;
 }
+/* Para responsividade em celulares*/
 @media (max-width: 700px) {
     .lista-faculdades-info {
+        /* Define as estruturas de coluna da grade*/
         grid-template-columns: 1fr;
     }
 }
+/* Para responsividade em celulares*/
 @media (max-width: 480px) {
     .informacoes-faculdades {
         padding-top: 52px;
     }
     .faculdade-info summary {
+        /* Define o espaçamento interno(padding)*/
         padding: 16px;
+        /* Define o tamanho da fonte com esse valor*/
         font-size: 17px;
     }
     .faculdade-info-conteudo {
+        /* Define o espaçamento interno(padding)*/
         padding: 0 16px 18px;
     }
     .faculdade-info-conteudo ul {
         grid-template-columns: 1fr;
     }
     .insight-exatas {
+        /* Define a altura mínima*/
         min-height: 230px;
+        /* Define a margin superior*/
         margin-top: 52px;
+        /* Define o espaçamento interno(padding)*/
         padding: 24px 18px;
     }
 }
 
+/* Para responsividade em celulares*/
 @media (max-width: 800px) {
     .cursos {
+        /* Inclui o padding e a borda no valor total do tamanho do elemento*/
         box-sizing: border-box;
+        /* Define a largura*/
         width: 100%;
+        /* Define o espaçamento interno(padding)*/
         padding: 0 24px;
     }
     .cursos h2 {
+        /* Define a margem*/
         margin: 48px 0 28px;
     }
     .div-cursos {
+        /*Espaçamento os entre os elementos filhos*/
         gap: 24px;
     }
     .div-cards-cursos {
+        /* Inclui o padding e a borda no valor total do tamanho do elemento*/
         box-sizing: border-box;
+        /* Define a largura*/
         width: calc(50% - 12px);
+        /* Define a altura mínima*/
         min-height: 190px;
+        /* Define a altura*/
         height: auto;
     }
 }
 
+/* Para responsividade em celulares*/
 @media (max-width: 520px) {
     .inicio-index,
     .inicio-cursos,
     .inicio-contato,
     .inicio-informacoes {
+        /* Inclui o padding e a borda no valor total do tamanho do elemento*/
         box-sizing: border-box;
+        /* Define a altura mínima*/
         min-height: 100vh;
+        /* Define a altura*/
         height: auto;
+        /* Define o espaçamento interno(padding)*/
         padding: 120px 16px 40px;
+        /*Espaçamento os entre os elementos filhos*/
         gap: 16px;
     }
     .inicio-index h1,
     .inicio-cursos h1,
     .inicio-contato h1,
     .inicio-informacoes h1 {
+        /* Define a largura máxima*/
         max-width: 100%;
+        /* Define o tamanho da fonte com esse valor*/
         font-size: clamp(30px, 9vw, 42px);
+        /* Alinha o texto ao centro*/
         text-align: center;
     }
     .inicio-index h2,
     .inicio-cursos h2,
     .inicio-contato h2,
     .inicio-informacoes h2 {
+        /* Define a largura máxima*/
         max-width: 100%;
+        /* Define o tamanho da fonte com esse valor*/
         font-size: clamp(17px, 5vw, 22px);
+        /* Alinha o texto ao centro*/
         text-align: center;
     }
     .btn-para-login,
     .btn-para-entrar,
     .link-contato-fixo {
+        /* Define a largura*/
         width: min(140px, calc(50vw - 20px));
+        /* Define a altura*/
         height: 44px;
     }
     .btn-para-login {
+        /* Define a distância em relação ao topo*/
         top: 12px;
+        /* Define a distância em relação à direita*/
         right: 12px;
     }
     .btn-para-entrar {
+        /* Define a distância em relação ao topo*/
         top: 64px;
+        /* Define a distância em relação à direita*/
         right: 12px;
     }
     .link-contato-fixo {
+        /* Define a distância em relação ao topo*/
         top: 12px;
+        /* Define a distância em relação à esquerda*/
         left: 12px;
     }
     .div-cursos {
+        /*Espaçamento os entre os elementos filhos*/
         gap: 16px;
     }
     .div-cards-cursos {
+        /* Define a largura*/
         width: 100%;
+        /* Define a altura mínima*/
         min-height: 170px;
     }
     .contato {
+        /* Define a margem*/
         margin: 32px auto;
     }
     .contato-apps {
+        /*Espaçamento os entre os elementos filhos*/
         gap: 12px;
     }
     .img-icons {
+        /* Define a largura*/
         width: 72px;
+        /* Define a altura*/
         height: 72px;
         flex-basis: 72px;
     }
     .h1-suportecontato {
+        /* Define a margem*/
         margin: 64px 16px 24px;
     }
     .fim-index,
     .fim-cursos,
     .fim-contato {
+        /* Define a margin superior*/
         margin-top: 64px;
     }
     .btns-fim a,
     .btns-fim button {
+        /* Define a largura máxima*/
         max-width: calc(100vw - 40px);
     }
     .fim-informacoes a,
     .fim-informacoes button {
+        /* Define a largura máxima*/
         max-width: calc(100vw - 40px);
     }
 }

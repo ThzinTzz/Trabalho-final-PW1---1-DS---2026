@@ -40,7 +40,7 @@
 
     <!--Onde o botão de rolagem deve parar-->
     <div id="destino"></div>
-
+    <!--Área de universidades e seus seguintes cursos-->
     <main class="informacoes-faculdades">
         <h2>Universidades da página inicial</h2>
         <p class="informacoes-introducao">Selecione uma faculdade para ver alguns cursos de graduação da área de exatas. A oferta pode variar por campus e processo seletivo; consulte o catálogo oficial para confirmar as opções atuais.</p>
@@ -50,7 +50,10 @@
             <p class="filtro-resultado" id="resultado-faculdades-info" role="status" aria-live="polite"></p>
         </div>
 
+        <!--Lista de cursos por cada faculdade-->
         <div class="lista-faculdades-info">
+
+            <!--Lista de cursos da faculdade UNICAMP-->
             <details class="faculdade-info">
                 <summary><span>Unicamp</span><span class="faculdade-local">Campinas e Limeira (SP)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -64,6 +67,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UNESP-->
             <details class="faculdade-info">
                 <summary><span>UNESP</span><span class="faculdade-local">Diversos campi (SP)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -75,7 +79,8 @@
                     <a href="https://vestibular.unesp.br/" target="_blank" rel="noopener noreferrer">Cursos e ingresso na UNESP</a>
                 </div>
             </details>
-
+            
+            <!--Lista de cursos da faculdade USP-->
             <details class="faculdade-info">
                 <summary><span>USP</span><span class="faculdade-local">Diversos campi (SP)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -89,6 +94,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFRJ-->
             <details class="faculdade-info">
                 <summary><span>UFRJ</span><span class="faculdade-local">Rio de Janeiro (RJ)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -102,6 +108,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFMG-->
             <details class="faculdade-info">
                 <summary><span>UFMG</span><span class="faculdade-local">Belo Horizonte (MG)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -115,6 +122,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade ITA-->
             <details class="faculdade-info">
                 <summary><span>ITA</span><span class="faculdade-local">São José dos Campos (SP)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -126,6 +134,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFRGS-->
             <details class="faculdade-info">
                 <summary><span>UFRGS</span><span class="faculdade-local">Porto Alegre (RS)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -139,6 +148,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFSC-->
             <details class="faculdade-info">
                 <summary><span>UFSC</span><span class="faculdade-local">Diversos campi (SC)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -152,6 +162,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFPR-->
             <details class="faculdade-info">
                 <summary><span>UFPR</span><span class="faculdade-local">Diversos campi (PR)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -165,6 +176,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UnB-->
             <details class="faculdade-info">
                 <summary><span>UnB</span><span class="faculdade-local">Brasília (DF)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -179,6 +191,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFPE-->
             <details class="faculdade-info">
                 <summary><span>UFPE</span><span class="faculdade-local">Recife e outros campi (PE)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -192,6 +205,7 @@
                 </div>
             </details>
 
+            <!--Lista de cursos da faculdade UFC-->
             <details class="faculdade-info">
                 <summary><span>UFC</span><span class="faculdade-local">Diversos campi (CE)</span></summary>
                 <div class="faculdade-info-conteudo">
@@ -207,6 +221,7 @@
             </details>
         </div>
 
+        <!--Insight com curiosidades de exatas-->
         <section class="insight-exatas" aria-labelledby="titulo-insight">
             <p class="insight-etiqueta">Pausa para pensar</p>
             <h2 id="titulo-insight">Curiosidades de exatas</h2>
@@ -215,6 +230,7 @@
         </section>
     </main>
 
+    <!--Botão para voltar à página inicial-->
     <footer class="fim-informacoes">
         <a href="index.html" class="btn-voltar-index">Voltar ao início</a>
     </footer>
@@ -242,6 +258,7 @@
                 <div class="campo-cadastro">
                     <label for="cadastro-faculdade">Faculdade desejada</label>
                     <select id="cadastro-faculdade" name="faculdade" autocomplete="organization" required>
+                        
                         <!--As opções de faculdades disponíveis-->
                         <option value="" selected disabled>Selecione uma faculdade</option>
                         <option value="Unicamp">Unicamp</option>
@@ -302,6 +319,7 @@
                 <p class="login-aviso" role="status" aria-live="polite"></p>
             </form>
 
+            <!--Instruções ao usuário-->
             <p class="nota-autenticacao">Entre com o e-mail e a senha usados no cadastro.</p>
         </div>
     </dialog>

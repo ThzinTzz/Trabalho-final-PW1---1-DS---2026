@@ -1,3 +1,5 @@
+//---------------------------------------SCROLL----------------------------------------------
+
 // Função que vai fazer rolar para baixo
 function rolarParaBaixo() {
     // Cria uma constantante destino que vai armazenar o id destino do HTML
@@ -10,17 +12,23 @@ function rolarParaBaixo() {
         });
     }
 }
-
+// Busca o tema que está salvo no navegador, se não conseguir usa o escuro
 try {
     const temaSalvo = localStorage.getItem('tema');
     document.documentElement.dataset.tema = temaSalvo === 'claro' ? 'claro' : 'escuro';
-} catch (erro) {
+}
+catch (erro) {
     document.documentElement.dataset.tema = 'escuro';
 }
-
+//---------------------------------------SUPORTE----------------------------------------------
+// Envia os dados ao servidos e mostra sucesso ou erro. Limpa o formulário depois do envio e reativa o botão
 const formularioSuporte = document.querySelector('.suporte');
+
 if (formularioSuporte instanceof HTMLFormElement) {
+
     const avisoSuporte = formularioSuporte.querySelector('.suporte-aviso');
+
+
     const botaoEnviarSuporte = formularioSuporte.querySelector('button[type="submit"]');
 
     formularioSuporte.addEventListener('submit', async (evento) => {
@@ -77,7 +85,8 @@ if (formularioSuporte instanceof HTMLFormElement) {
     });
 }
 
-//---------------------------------------ALERT----------------------------------------------
+//---------------------------------------ALERT BOAS VINDAS----------------------------------------------
+// Abre a janela de boas vindas sempre que o usuário entrar no início, permitindo fechar pelo botão ou clicando fora
 const modalBoasVindas = document.querySelector('.modal-boas-vindas');
 if (modalBoasVindas instanceof HTMLDialogElement) {
     const botoesFecharBoasVindas = modalBoasVindas.querySelectorAll('.modal-boas-vindas-fechar, .btn-entendi-boas-vindas');
@@ -94,10 +103,8 @@ if (modalBoasVindas instanceof HTMLDialogElement) {
 
     modalBoasVindas.showModal();
 }
-//--------------------------------------------------------------------------------------------
-
-//---------------------------------------TEMA----------------------------------------------
-// Atualiza os textos
+//---------------------------------------TROCAR TEMA----------------------------------------------
+// Atualiza o botão e alterna entre os temas salvando a escolha no navegador
 function atualizarBotaoTema() {
     const botaoTema = document.querySelector('.btn-tema');
 
@@ -116,13 +123,17 @@ function alternarTema() {
     try {
         localStorage.setItem('tema', novoTema);
     } catch (erro) {
-        // O tema continua funcionando na página mesmo se o armazenamento não estiver disponível
     }
 
     atualizarBotaoTema();
 }
-
-//---------------------------------------Busca de faculdades e cursos----------------------------------------------
+atualizarBotaoTema();
+const botaoTema = document.querySelector('.btn-tema');
+if (botaoTema) {
+    botaoTema.addEventListener('click', alternarTema);
+}
+//---------------------------------------BUSCA: FACULDADES E CURSOS---------------------------------------------
+// Filtra faculdades, cursos e informações, mostrando a quantidade de resultados e ignorando acentuação e case-sensitive
 const filtrosListas = [
     {
         campo: '#filtro-faculdades',
@@ -184,16 +195,9 @@ filtrosListas.forEach(({ campo, cards: seletorCards, resultado }) => {
     });
 });
 
-// Atualiza o botão do tema e faz com que ele responda ao clique do usuário
-atualizarBotaoTema();
-const botaoTema = document.querySelector('.btn-tema');
-if (botaoTema) {
-    botaoTema.addEventListener('click', alternarTema);
-}
-//--------------------------------------------------------------------------------------------
-
-//---------------------------------------MODAL----------------------------------------------
-
+//---------------------------------------MODAL CADASTRO----------------------------------------------
+/* Aqui é a parte de controle do cadastro, ele relaciona cada faculdade
+a seu curso correspondente e envia os dados ao servidor*/
 const cursosPorFaculdade = {
     Unicamp: [
         'Ciência da Computação', 'Engenharia Agrícola', 'Engenharia Ambiental', 'Engenharia Civil',
@@ -367,7 +371,8 @@ if (modalCadastro instanceof HTMLDialogElement) {
         }
     });
 }
-
+//---------------------------------------MODAL LOGIN----------------------------------------------
+/*Aqui é a parte de controle do login, ele envia os dados à API e recebe a resposta da autenticação*/
 const modalLogin = document.querySelector('.modal-login');
 if (modalLogin instanceof HTMLDialogElement) {
     const botoesAbrirLogin = document.querySelectorAll('.btn-para-entrar');
@@ -453,7 +458,8 @@ if (modalLogin instanceof HTMLDialogElement) {
         campoEmailLogin.focus();
     }
 }
-
+//---------------------------------------PERFIL----------------------------------------------
+// Mostra os dados do perfil do usuário de acordo com o cadastro e encerra a sessão quando o usuário solicita
 const dadosPerfil = document.querySelector('.dados-perfil');
 if (dadosPerfil instanceof HTMLElement) {
     const avisoPerfil = document.querySelector('.perfil-aviso');
@@ -544,9 +550,10 @@ if (dadosPerfil instanceof HTMLElement) {
     });
 }
 
-//---------------------------------------Lista de cursos----------------------------------------------
-
-
+//---------------------------------------LISTA DE CURSOS----------------------------------------------
+/* Permite ao usuário adicionar e remover cursos a uma lista,
+qual é atualizada no mesmo instante e armazena o que está lista no navegador para que
+ao atualizar não desapareça o que tem na lista*/
 const cardsCursos = document.querySelectorAll('.div-cards-cursos[data-curso]');
 const listaCursosItens = document.querySelector('.lista-cursos-itens');
 if (cardsCursos.length > 0 && listaCursosItens instanceof HTMLUListElement) {
@@ -687,7 +694,8 @@ if (cardsCursos.length > 0 && listaCursosItens instanceof HTMLUListElement) {
     renderizarListaCursos();
 }
 
-//---------------------------------------Curiosidades de exatas----------------------------------------------
+//---------------------------------------INSIGHTS----------------------------------------------
+// Mostra uma curiosidade diferente sobre o assunto exatas a cada clique
 const botaoProximoInsight = document.querySelector('#btn-proximo-insight');
 const mensagemInsight = document.querySelector('#mensagem-insight');
 

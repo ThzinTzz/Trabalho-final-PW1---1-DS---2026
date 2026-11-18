@@ -1,3 +1,15 @@
+
+
+
+
+<!--ATENÇÃO, O PERFIL NÃO É PARA SER ACESSADO PARA OLHAR AS COISAS, POIS PODE SER QUE NÃO ENTENDA
+    MAS O PROFESSOR PODE SIM PARA ANALISAR, ELE IRÁ ESTAR COMENTADO E FUNCIONAL, POIS É UM HTML 
+    COMO QUALQUER OUTRO, ELE PODE GERAR DÚVIDAS POIS DEPENDE DE FATORES COMO O SITE ESTÁR NO XAMPP
+    COM O APACHE E O MYSQL ATIVOS-->
+
+    
+
+
 <!--Informa ao navegador que o documento é um documento HTML-->
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -22,30 +34,36 @@
     <button class="btn-tema" type="button">☀️ Modo claro</button>
 
     <main class="tela-autenticacao">
+
+        <!--Apresentação da tela do perfil do usuário-->
         <section class="cartao-autenticacao cartao-perfil" aria-labelledby="titulo-perfil">
             <p class="modal-cadastro-destaque">ExatasNaHora</p>
             <h1 id="titulo-perfil">Meu perfil</h1>
             <p class="nota-autenticacao">Confira os dados salvos no seu cadastro.</p>
 
             <dl class="dados-perfil">
+                <!--Nome do usuário de acordo com o dado do Banco de Dados-->
                 <div>
                     <dt>Nome</dt>
                     <dd id="perfil-nome">Carregando...</dd>
                 </div>
+                <!--E-mail do usuário de acordo com o dado do Banco de Dados-->
                 <div>
                     <dt>E-mail</dt>
                     <dd id="perfil-email">Carregando...</dd>
                 </div>
+                <!--Faculdade do usuário de acordo com o dado do Banco de Dados-->
                 <div>
                     <dt>Faculdade escolhida</dt>
                     <dd id="perfil-faculdade">Carregando...</dd>
                 </div>
+                <!--Curso do usuário de acordo com o dado do Banco de dados-->
                 <div>
                     <dt>Curso escolhido</dt>
                     <dd id="perfil-curso">Carregando...</dd>
                 </div>
             </dl>
-
+            <!--Botçao para o usuário sair da conta e voltar para a tela inicial-->
             <p class="perfil-aviso" role="status" aria-live="polite"></p>
             <button class="btn-enviar-cadastro btn-sair" type="button" hidden>Sair da conta</button>
         </section>
