@@ -217,7 +217,8 @@ button{
 .btn-para-lista-contato,
 .btn-para-inicio,
 .btn-para-cursos,
-.btn-para-informacoes{
+.btn-para-informacoes,
+.btn-para-github{
     /* Define a cor do texto*/
     color: #ffffff;
     /* Define a cor de fundo*/
@@ -301,6 +302,7 @@ button{
 .btn-para-inicio:hover,
 .btn-para-cursos:hover,
 .btn-para-informacoes:hover,
+.btn-para-github:hover,
 .btn-para-login:hover,
 .btn-para-contato:hover,
 .btn-conheca-cursos:hover,
